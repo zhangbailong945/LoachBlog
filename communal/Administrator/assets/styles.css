@@ -23,8 +23,9 @@ body {
     max-width: 300px;
     padding: 19px 29px 29px;
     margin: 0 auto 20px;
-    background-color: #fff;
-    border: 1px solid #e5e5e5;
+    /*background-color: #000;*/
+    background: url('http://localhost/LoachBlog/communal/Administrator/images/loginbg.png') repeat; 
+    border: 0px solid #e5e5e5;
     -webkit-border-radius: 5px;
        -moz-border-radius: 5px;
             border-radius: 5px;
@@ -42,6 +43,7 @@ body {
     height: auto;
     margin-bottom: 15px;
     padding: 7px 9px;
+    font-color:white;
 }
 
 /** 2 level sub menu **/
