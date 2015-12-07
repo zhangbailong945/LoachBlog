@@ -17,7 +17,7 @@
 
     
     
-    <div class="container">
+    <div class="container" style="border：1px solid red;">
       <?php echo validation_errors(); ?>
 
 <?php echo form_open('administrator/Login/login', 'class="form-signin" id="loginform"'); ?>
