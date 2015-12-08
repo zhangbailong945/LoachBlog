@@ -1,0 +1,72 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+  background-image:url('http://localhost/LoachBlog/communal/Administrator/images/background.jpg');
+  background-repeat:no-repeat;
+}
+
+.main_div{
+
+   margin-top:100px;
+   width:662px;
+   height:272px;
+   margin-left:36%;
+   margin-top:100px;
+}
+
+.container{
+
+   /*margin-top:100px;*/
+   width:330px;
+   float:left;
+}
+
+.error_div{
+   width:330px;
+   height:270px;
+   float:left;
+}
+
+.cloud{
+   background-image:url('http://localhost/LoachBlog/communal/Administrator/images/cloud.png');
+   text-align:center;
+   line-height:41px;
+   color:red;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+  background-image:url('http://localhost/LoachBlog/communal/Administrator/images/loginbg.png');
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="username"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="userpassword"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

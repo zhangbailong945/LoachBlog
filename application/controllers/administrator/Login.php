@@ -24,7 +24,7 @@ class Login extends CI_Controller
      public function login()
      {
      	
-     	$this->form_validation->set_error_delimiters('<center><div class="alert alert-danger" style="width:300px;height:40px;" role="alert">', '</div></center>');
+     	$this->form_validation->set_error_delimiters('<center><div class="cloud" style="width:191px;height:41px;margin-top:5px;text-align:center;">', '</div></center>');
         $this->form_validation->set_rules('username_check', 'username_check', 'callback_username_check'); 
         $this->form_validation->set_rules('userpassword_check', 'userpassword_check', 'callback_userpassword_check');     	
 		$this->form_validation->set_rules('username',"管理员账号",'required');
@@ -41,11 +41,11 @@ class Login extends CI_Controller
             $flag=$this->Musers->user_login($this->input->post('username'),$this->input->post('userpassword'));
             if($flag==true)
             {
-               $this->load->view('administrator/administrator.html');
+               $this->load->view('Administrator/administrator');
             }
             else
             {
-               $this->form_validation->set_message('username_check', '用户名不存在');
+               $this->form_validation->set_message('username_check', '管理员账号不存在');
                redirect('administrator/login');
             }
 		}
@@ -68,7 +68,7 @@ class Login extends CI_Controller
         }
         else
         {
-        	$this->form_validation->set_message('username_check', '管理员账号不存在！');       
+        	$this->form_validation->set_message('username_check', '管理员账号不存在.');       
             return FALSE;
         }
      }
@@ -90,7 +90,7 @@ class Login extends CI_Controller
         }
         else
         {
-            $this->form_validation->set_message('userpassword_check', '管理员密码错误！');       
+            $this->form_validation->set_message('userpassword_check', '管理员密码错误.');       
             return FALSE;
         }
      }
