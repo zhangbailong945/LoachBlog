@@ -27,8 +27,11 @@
 	      <?php echo form_open('administrator/Login/login', 'class="form-signin" id="loginform"'); ?>
 	      <form class="form-signin">
 	        <h2 class="form-signin-heading" style="color:white"><b>登录</b></h2>
-	        <input type="text" name="username"  value="<?php echo set_value('username'); ?>" class="form-control" placeholder="请输入管理员账号">
+	        <input type="text" name="username"  value="<?php echo set_value('username'); ?>" class="form-control"  placeholder="请输入管理员账号">
 	        <input type="password" name="userpassword" value="<?php echo set_value('userpassword'); ?>" class="form-control" placeholder="请输入管理员密码">
+	        <label>
+	        <input type="text" class="authcode_input" name="authcode_input" id value="<?php echo set_value('authcode_input'); ?>" placeholder="请输入验证码">&nbsp;&nbsp;<a href="javascript:void(0)"><img id="authcode"src="<?php echo site_url().'/administrator/imgauthcode/show';?>" onclick="refresh('/administrator/imgauthcode/show')"/></a>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="refresh()">看不清？</a>
+	        </label>
 	        <label class="checkbox">
 	          <center><input type="checkbox"  value="remember-me" ><font style="color:white">记住密码</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" style="color:white" value="forget"><font style="color:white">忘记密码</font></center>
 	        </label>
@@ -62,6 +65,12 @@
                     flakeheightandwidth: 15 // 如果选项flakesize的值是2，flakeheightandwidth值应该是16×16像素。
                 });
             });
+
+            function refresh()
+            {
+            var url='<?php echo site_url()."/administrator/imgauthcode/show/";?>'+Math.random();
+            $('#authcode').attr('src', url);
+            }
      </script>
   </body>
 </html>

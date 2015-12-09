@@ -1,8 +1,6 @@
 <?php
-
 class Login extends CI_Controller
-{
-	
+{	
 	/**
 	 * 继续父类控制器
 	 * Enter description here ...
@@ -10,6 +8,7 @@ class Login extends CI_Controller
 	 public function __construct()
 	 {
 	    parent::__construct();
+	    $this->load->library('Authcode');
 	 }
 	 
      public function index()
