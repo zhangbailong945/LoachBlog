@@ -48,6 +48,8 @@ body {
 .form-signin .checkbox {
   font-weight: normal;
 }
+
+
 .form-signin .form-control {
   position: relative;
   height: auto;
@@ -62,6 +64,7 @@ body {
 .authcode_input{
    width:80px;
   margin-top:10px;
+  margin-bottom:10px;
   font-size: 12px;
   border-radius:5px;
 }

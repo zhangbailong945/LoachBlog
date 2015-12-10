@@ -33,12 +33,10 @@ class Imgauthcode extends CI_Controller
 	 */
 	function check()
 	{
-		if ($this->authcode->check($this->uri->segment(3))) {
-			$xml_data['result'] = 'succeed';
-			$this->load->library('My_Xml');
-			echo XML_serialize($xml_data);
+		if ($this->authcode->check($this->uri->segment(4))) {
+			echo "true";
 		} else {
-			echo '验证码不正确，请重新输入';
+			echo "false";
 		}		
 	}
 }

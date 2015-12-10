@@ -106,7 +106,7 @@ class Authcode
 	 * @param string $auth_code
 	 * @return bool
 	 */
-	function check($auth_code = null)
+	function check($auth_code)
 	{
 		return ($this->CI->session->userdata('auth_code') && $auth_code) ? ($this->CI->session->userdata('auth_code') === $auth_code) : false;
 	}

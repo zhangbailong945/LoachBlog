@@ -30,8 +30,7 @@ class Login extends CI_Controller
 		$this->form_validation->set_rules('userpassword',"管理员密码",'required');
 		$bool =  $this->form_validation->run();
 		if($bool==FALSE)
-		{
-		  
+		{		  
           $this->load->view('administrator/login');
 		}
 		else 
