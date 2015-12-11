@@ -32,6 +32,24 @@
          
       }
       
+      public function get_user($username,$userpassword)
+      {
+         $data=array();
+         $this->db->where('username',$username);
+         $this->db->where('userpassword',$userpassword);
+         $query=$this->db->get('users');
+         $row=$query->row();
+         if(isset($row))
+         {
+         	$data['id']=$row->id;
+            $data['username']=$row->username;
+            $data['useremail']=$row->useremail;
+            $data['userip']=$row->userip;
+         }
+         
+         return $data;
+      }
+      
       /**
        * 后台账号验证模型层
        *@param 管理员账号

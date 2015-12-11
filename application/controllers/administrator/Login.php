@@ -39,7 +39,10 @@ class Login extends CI_Controller
             $flag=$this->Musers->user_login($this->input->post('username'),$this->input->post('userpassword'));
             if($flag==true)
             {
-               $this->load->view('Administrator/administrator');
+               //从数据库获取管理员信息
+               $data=$this->Musers->get_user($this->input->post('username'),$this->input->post('userpassword'));
+               $this->session->set_userdata($data);
+               $this->load->view('administrator/administrator');
             }
             else
             {
