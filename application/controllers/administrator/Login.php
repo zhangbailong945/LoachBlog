@@ -13,7 +13,8 @@ class Login extends CI_Controller
 	 
      public function index()
      {
-       $this->load->view('administrator/login');
+       //$this->load->view('administrator/login');
+       $this->load->view('administrator/index.html');
      }
 	 	 
 	 /**
