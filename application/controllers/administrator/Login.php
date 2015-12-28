@@ -14,7 +14,7 @@ class Login extends CI_Controller
      public function index()
      {
        //$this->load->view('administrator/login');
-       $this->load->view('administrator/index.html');
+       $this->load->view('administrator/login');
      }
 	 	 
 	 /**
@@ -43,7 +43,7 @@ class Login extends CI_Controller
                //从数据库获取管理员信息
                $data=$this->Musers->get_user($this->input->post('username'),$this->input->post('userpassword'));
                $this->session->set_userdata($data);
-               $this->load->view('administrator/administrator');
+               $this->load->view('administrator/index');
             }
             else
             {
