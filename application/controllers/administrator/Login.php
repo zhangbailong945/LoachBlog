@@ -62,17 +62,18 @@ class Login extends CI_Controller
      {
 
     	$this->load->model('administrator/Musers');
-        $flag=$this->Musers->user_check($this->input->post('username'));                   
+
+        $flag=$this->Musers->user_check($this->uri->segment(4));                   
         if ($flag ==true)
         {
 
-            return TRUE;
+            echo "true";
         }
         else
-        {
-        	$this->form_validation->set_message('username_check', '管理员账号不存在.');       
-            return FALSE;
+        {    
+            echo "false";
         }
+
      }
      
      /**
@@ -84,16 +85,15 @@ class Login extends CI_Controller
      {
 
     	$this->load->model('administrator/Musers');
-        $flag=$this->Musers->password_check($this->input->post('userpassword'));                   
+        $flag=$this->Musers->password_check($this->uri->segment(4));                   
         if ($flag ==true)
         {
 
-            return TRUE;
+            echo "true";
         }
         else
         {
-            $this->form_validation->set_message('userpassword_check', '管理员密码错误.');       
-            return FALSE;
+            echo "false";
         }
      }
     
