@@ -96,6 +96,15 @@ class Login extends CI_Controller
             echo "false";
         }
      }
+     
+     public function loginout()
+     {
+     	unset($_SESSION['username']);
+        session_destroy();
+
+        $this->load->view('administrator/login');
+
+     }
     
     
     

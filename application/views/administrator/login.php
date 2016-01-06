@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php 
+header("Content-type:text/html;charset=utf-8");
+?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -16,6 +19,8 @@
 
     <!-- Custom styles for this template -->
     <link href="http://localhost/LoachBlog/communal/Administrator/css/signin.css" rel="stylesheet">
+    <link href="http://localhost/LoachBlog/communal/Administrator/themes/default/easyui.css" rel="stylesheet">
+    <link href="http://localhost/LoachBlog/communal/Administrator/themes/icon.css" rel="stylesheet">
   </head>
 
   <body>
@@ -42,11 +47,10 @@
 	      </form>
 	    </div>
 	    
-	    <!-- 错误信息框 -->
+	    <!-- 错误信息框 
 	    <div class="error_div" id="error_div">
-	         <?php echo validation_errors(); ?>
 	    </div>
-	    
+	    -->
     </div>
     
     <!--雪花落脚点 -->
@@ -56,6 +60,7 @@
     <!-- 引入脚本 -->
      <script src="http://localhost/LoachBlog/communal/bootstrap/js/bootstrap.min.js"></script>
      <script src="http://localhost/LoachBlog/communal/administrator/js/jquery-1.4.4.min.js"></script>
+     <script src="http://localhost/LoachBlog/communal/administrator/js/jquery.easyui.min.js"></script>
      <script src="http://localhost/LoachBlog/communal/Administrator/js/christmassnow.js"></script>
      <script>
             /*雪花飘飘*/
@@ -70,6 +75,21 @@
                 });
             });
 
+            /*判断输入框是否为空！*/
+            function checkEmpty(str)
+            {
+                var flag=false;
+                if(str=='undefined'||str==''||str==null)
+                {
+                   flag=false;
+                }
+                else
+                {
+                   flag=true;
+                }
+                return flag;
+            }
+
             /*刷新验证码*/
             function refresh()
             {
@@ -81,28 +101,51 @@
             function check_username()
             {
                 var flag=false;
-            	var username = $('#username').val();	
-            	$('#error_div').html('');
-            	$.ajax({
-            	    type: 'POST',
-            	    async: false,
-            	    url:"<?php echo site_url()."/administrator/Login/username_check/";?>"+username,
-            	    dataType: "json",
-            	    success: function(data)
-            	    {
+            	var username = $('#username').val();
+            	if(checkEmpty(username)==false)
+            	{ 
+                	 $.messager.show({
+	          				title:'登录提示：',
+	          				msg:'<font color="red">账号不能为空！</font>',
+	          				showType:'slide',
+	          				timeout:2000,
+	          				width:188,
+	          				height:88,
+	          				
+	          			});
+                }
+            	else
+            	{
+	            	$.ajax({
+	            	    type: 'POST',
+	            	    async: false,
+	            	    url:"<?php echo site_url()."/administrator/Login/username_check/";?>"+username,
+	            	    dataType: "json",
+	            	    success: function(data)
+	            	    {
+	
+	            	    	if(data)
+				              {
+	  			                  flag=true; 
+				            	  $('#error_div').html('');                   
+					           }
+				              else
+				              {
+				            	  flag=false;			            	  
+				            	  $.messager.show({
+				          				title:'登录提示：',
+				          				msg:'<font color="red">账号不存在！</font>',
+				          				showType:'slide',
+				          				timeout:2000,
+				          				width:188,
+				          				height:88,
+				          				
+				          			});
+					          }
+	            	   }
+	            	});
+            	}
 
-            	    	if(data)
-			              {
-  			                  flag=true; 
-			            	  $('#error_div').html('');                   
-				           }
-			              else
-			              {
-			            	  flag=false;			            	  
-			            	$('#error_div').html('<center><div class="cloud" style="width:191px;height:41px;margin-top:5px;text-align:center;">用户名不存在！</div></center>');    
-				          }
-            	   }
-            	});
 	            return flag;
             }
             
@@ -111,56 +154,101 @@
             {
                 var flag=false;
             	var userpassword = $('#userpassword').val();	
-            	$('#error_div').html('');
-            	$.ajax({
-            	    type: 'POST',
-            	    async: false,
-            	    url:"<?php echo site_url()."/administrator/Login/userpassword_check/";?>"+userpassword,
-            	    dataType: "json",
-            	    success: function(data)
-            	    {
-
-            	    	if(data)
-			              {
-  			                  flag=true; 
-			            	  $('#error_div').html('');                   
-				           }
-			              else
-			              {
-			            	  flag=false;			            	  
-			            	$('#error_div').html('<center><div class="cloud" style="width:191px;height:41px;margin-top:5px;text-align:center;">密码输入有误！</div></center>');    
-				          }
-            	   }
-            	});
+            	if(checkEmpty(userpassword)==false)
+            	{
+            		$.messager.show({
+          				title:'登录提示：',
+          				msg:'<font color="red">密码不能为空！</font>',
+          				showType:'slide',
+          				timeout:2000,
+          				width:188,
+          				height:88,
+          				
+          			});
+                }
+            	else
+            	{
+	            	$.ajax({
+	            	    type: 'POST',
+	            	    async: false,
+	            	    url:"<?php echo site_url()."/administrator/Login/userpassword_check/";?>"+userpassword,
+	            	    dataType: "json",
+	            	    success: function(data)
+	            	    {
+	
+	            	    	if(data)
+				              {
+	  			                  flag=true;                 
+					           }
+				              else
+				              {
+				            	  flag=false;			            	  
+				            	  $.messager.show({
+				          				title:'登录提示：',
+				          				msg:'<font color="red">密码输入有误！</font>',
+				          				showType:'slide',
+				          				timeout:2000,
+				          				width:188,
+				          				height:88,
+				          				
+				          			});
+				              }
+	            	   }
+	            	});
+            	}
 	            return flag;
             }
+            
+            
 
             /*验证码检查*/
             function ajaxauth()
             {
                 var flag=false;
             	var authcode = $('#authcode_input').val();	
-            	$('#error_div').html('');
-            	$.ajax({
-            	    type: 'POST',
-            	    async: false,
-            	    url:"<?php echo site_url()."/administrator/imgauthcode/check/";?>"+authcode,
-            	    dataType: "json",
-            	    success: function(data)
-            	    {
-
-            	    	if(data)
-			              {
-  			                  flag=true; 
-			            	  $('#error_div').html('');                   
-				           }
-			              else
-			              {
-			            	  flag=false;			            	  
-			            	$('#error_div').html('<center><div class="cloud" style="width:191px;height:41px;margin-top:5px;text-align:center;">验证码有误！</div></center>');    
-				          }
-            	   }
-            	});
+            	if(checkEmpty(authcode)==false)
+            	{
+            		$.messager.show({
+          				title:'登录提示：',
+          				msg:'<font color="red">验证码不能为空！</font>',
+          				showType:'slide',
+          				timeout:2000,
+          				width:188,
+          				height:88,
+          				
+          			});
+                }
+            	else
+            	{
+	            	$.ajax({
+	            	    type: 'POST',
+	            	    async: false,
+	            	    url:"<?php echo site_url()."/administrator/imgauthcode/check/";?>"+authcode,
+	            	    dataType: "json",
+	            	    success: function(data)
+	            	    {
+	
+	            	    	if(data)
+				              {
+	  			                  flag=true; 
+				            	  $('#error_div').html('');                   
+					           }
+				              else
+				              {
+				            	  flag=false;			            	  
+				            	  $.messager.show({
+				          				title:'登录提示：',
+				          				msg:'<font color="red">验证码输入有误！</font>',
+				          				showType:'slide',
+				          				timeout:2000,
+				          				width:188,
+				          				height:88,
+				          				
+				          			});
+					          }
+	            	   }
+	            	});
+            	}
 	            return flag;
             }
             
@@ -168,7 +256,7 @@
             function dosubmit()
             {
                 var flag=false;
-                if(ajaxauth())
+                if(check_username()&&check_userpassword()&&ajaxauth())
                   {
                 	flag=true;
                   }

@@ -32,6 +32,11 @@
          
       }
       
+      /**
+       * 获取用户信息
+       * @param unknown_type $username
+       * @param unknown_type $userpassword
+       */
       public function get_user($username,$userpassword)
       {
          $data=array();
@@ -92,6 +97,19 @@
          }
          
          return $flag;
+      }
+      
+      public function update_user($id,$userpassword)
+      {
+          $flag=false;
+          $this->db->where('id',$id);
+          $this->db->update('users',array('userpassword'=>$userpassword));
+          $nums=$this->db->affected_rows();
+          if($nums>0)
+          {
+             $flag=true;
+          }         
+          return $flag;
       }
       
   }

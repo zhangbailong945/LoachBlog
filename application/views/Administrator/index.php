@@ -1,4 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php 
+header("Content-type:text/html;charset=utf-8");
+?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head id="Head1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -13,31 +16,25 @@
 	
 	 var _menus = {
 		                 "menus":[
-						           {"menuid":"1","icon":"icon-sys","menuname":"项目修改",
+						           {"menuid":"1","icon":"icon-sys","menuname":"账号管理",
 							      "menus":[
-									{"menuid":"12","menuname":"网页","icon":"icon-page","url":"menu1/treegrid.html"},
+									{"menuid":"12","menuname":"用户管理","icon":"icon-role","url":"<?php echo site_url()."/administrator/Administrator/users_view/";?>"},
 									{"menuid":"13","menuname":"类","icon":"icon-class","url":"menu1/class.html"},
-									{"menuid":"14","menuname":"菜单","icon":"icon-role","url":"demo2.html"},
+									{"menuid":"14","menuname":"菜单","icon":"icon-page","url":"demo2.html"},
 									{"menuid":"15","menuname":"菜单","icon":"icon-set","url":"demo.html"},
 									{"menuid":"16","menuname":"菜单","icon":"icon-log","url":"demo1.html"}
 								    ]},
-						{"menuid":"8","icon":"icon-sys","menuname":"项目设计",
+						{"menuid":"8","icon":"icon-sys","menuname":"博客管理",
 							"menus":[{"menuid":"21","menuname":"项目分析","icon":"icon-nav","url":"menu2/tree2.html"},
 									{"menuid":"22","menuname":"菜单","icon":"icon-nav","url":"demo1.html"}
 								]
-						},{"menuid":"56","icon":"icon-sys","menuname":"菜单",
+						},{"menuid":"56","icon":"icon-sys","menuname":"相册管理",
 							"menus":[{"menuid":"31","menuname":"菜单","icon":"icon-nav","url":"demo1.html"},
 									{"menuid":"32","menuname":"菜单","icon":"icon-nav","url":"demo2.html"}
 								]
-						},{"menuid":"28","icon":"icon-sys","menuname":"菜单",
-							"menus":[{"menuid":"41","menuname":"菜单","icon":"icon-nav","url":"demo.html"},
-									{"menuid":"42","menuname":"菜单","icon":"icon-nav","url":"demo1.html"},
-									{"menuid":"43","menuname":"菜单","icon":"icon-nav","url":"demo2.html"}
-								]
-						},{"menuid":"39","icon":"icon-sys","menuname":"菜单",
-							"menus":[{"menuid":"51","menuname":"菜单","icon":"icon-nav","url":"demo.html"},
-									{"menuid":"52","menuname":"菜单","icon":"icon-nav","url":"demo1.html"},
-									{"menuid":"53","menuname":"菜单","icon":"icon-nav","url":"demo2.html"}
+						},{"menuid":"28","icon":"icon-sys","menuname":"商品管理",
+							"menus":[{"menuid":"41","menuname":"商品","icon":"icon-nav","url":"demo.html"},
+									{"menuid":"42","menuname":"商品分类","icon":"icon-nav","url":"demo1.html"}
 								]
 						}
 				]};
@@ -58,8 +55,6 @@
             $('#w').window('close');
         }
 
-        
-
         //修改密码
         function serverLogin() {
             var $newpass = $('#txtNewPass');
@@ -70,7 +65,7 @@
                 return false;
             }
             if ($rePass.val() == '') {
-                msgShow('系统提示', '请在一次输入密码！', 'warning');
+                msgShow('系统提示', '请再一次输入密码！', 'warning');
                 return false;
             }
 
@@ -79,17 +74,72 @@
                 return false;
             }
 
-            $.post('/ajax/editpassword.ashx?newpass=' + $newpass.val(), function(msg) {
-                msgShow('系统提示', '恭喜，密码修改成功！<br>您的新密码为：' + msg, 'info');
-                $newpass.val('');
-                $rePass.val('');
-                close();
-            })
+            $.ajax({
+        	    type: 'POST',
+        	    async: false,
+        	    url:"<?php echo site_url()."/administrator/Administrator/userpassword_update/";?>"+$rePass.val(),
+        	    dataType: "json",
+        	    success: function(data)
+        	    {
+
+        	    	if(data)
+		              {
+        	    		    $('#w').window('close');
+	        	    		$.messager.show({
+		          				title:'提示：',
+		          				msg:'<font color="green">密码修改成功！</font>',
+		          				showType:'slide',
+		          				timeout:5000,
+		          				width:258,
+		          				height:88,
+		          				
+		          			});
+          
+			           }
+		              else
+		              {		
+		            	  $('#w').window('close');	            	  
+		            	  $.messager.show({
+		          				title:'提示：',
+		          				msg:'<font color="red">密码修改失败！</font>',
+		          				showType:'slide',
+		          				timeout:5000,
+		          				width:258,
+		          				height:88,
+		          				
+		          			});
+
+			          }
+        	   }
+        	});
             
         }
 
-        $(function() {
+        /*判断输入框是否为空！*/
+        function checkEmpty(str)
+        {
+            var flag=false;
+            if(str=='undefined'||str==''||str==null)
+            {
+               flag=false;
+            }
+            else
+            {
+               flag=true;
+            }
+            return flag;
+        }
 
+        $(function() {
+            var admin='<?php echo $_SESSION['username']?>';
+            if(checkEmpty(admin)==false)
+            {
+               location.href="http://localhost/LoachBlog/index.php/administrator/Login/login";
+            }
+            else
+            {
+               $("#adminpanel").html(''+admin+'');
+            }
             openPwd();
 
             $('#editpass').click(function() {
@@ -98,6 +148,7 @@
 
             $('#btnEp').click(function() {
                 serverLogin();
+                
             })
 
 			$('#btnCancel').click(function(){closePwd();})
@@ -106,7 +157,7 @@
                 $.messager.confirm('系统提示', '您确定要退出本次登录吗?', function(r) {
 
                     if (r) {
-                        location.href = '/ajax/loginout.ashx';
+                    	location.href="http://localhost/LoachBlog/index.php/administrator/Login/loginout";
                     }
                 });
             })
@@ -121,7 +172,7 @@
     </noscript>
 <div region="north" split="true" border="false" style="overflow: hidden; height: 30px;
         background: url(http://localhost/loachblog/communal/administrator/images/admin/layout-browser-hd-bg.gif) #7f99be repeat-x center 50%;
-        line-height: 20px;color: #fff; font-family: Verdana, 微软雅黑,黑体"> <span style="float:right; padding-right:20px;" class="head">欢迎 管理员 <a href="#" id="editpass">修改密码</a> <a href="#" id="loginOut">安全退出</a></span> <span style="padding-left:10px; font-size: 16px; "><img src="http://localhost/loachblog/communal/administrator/images/admin/blocks.gif" width="20" height="20" align="absmiddle" />项目管理系统</span> </div>
+        line-height: 20px;color: #fff; font-family: Verdana, 微软雅黑,黑体"> <span style="float:right; padding-right:20px;" class="head">欢迎 <a href="#" id="adminpanel"></a>管理员 <a href="#" id="editpass">修改密码</a> <a href="#" id="loginOut">安全退出</a></span> <span style="padding-left:10px; font-size: 16px; "><img src="http://localhost/loachblog/communal/administrator/images/admin/blocks.gif" width="20" height="20" align="absmiddle" />LoachBlog博客后台管理系统</span> </div>
 <div region="south" split="true" style="height: 30px; background: #D2E0F2; ">
       <div class="footer">loachblog©zhangbailong945@outlook.com</div>
     </div>
@@ -134,7 +185,7 @@
 <div id="mainPanle" region="center" style="background: #eee; overflow-y:hidden">
       <div id="tabs" class="easyui-tabs"  fit="true" border="false" >
     <div title="欢迎使用" style="padding:20px;overflow:hidden; color:red; " >
-          <h1 style="font-size:24px;">欢迎使用项目管理系统</h1>
+          <h1 style="font-size:24px;">欢迎来到LoachBlog博客后台管理系统</h1>
         </div>
   </div>
     </div>
@@ -144,7 +195,7 @@
 
 <!--修改密码窗口-->
 <div id="w" class="easyui-window" title="修改密码" collapsible="false" minimizable="false"
-        maximizable="false" icon="icon-save"  style="width: 300px; height: 150px; padding: 5px;
+        maximizable="false" icon="icon-save"  style="width: 300px; height: 240px; padding: 5px;
         background: #fafafa;">
       <div class="easyui-layout" fit="true">
     <div region="center" border="false" style="padding: 10px; background: #fff; border: 1px solid #ccc;">
