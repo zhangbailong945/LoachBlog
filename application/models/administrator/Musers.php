@@ -55,6 +55,24 @@
          return $data;
       }
       
+      public function get_users()
+      {
+	       $data=array();
+	 
+	       $query= $this->db->query("select * from users");
+	
+			foreach ($query->result_array() as $row)
+			{
+				  $data=array();
+		          $data['id']=$row['id'];
+		          $data['username']=$row['username'];
+		          $data['useremail']=$row['useremail'];
+		          $data['userip']=$row['userip'];
+			}
+         echo $data;
+         
+      }
+      
       /**
        * 后台账号验证模型层
        *@param 管理员账号

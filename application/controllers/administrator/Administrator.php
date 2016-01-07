@@ -23,7 +23,14 @@ class Administrator extends CI_Controller
      
      public function users_view()
      {
-       $this->load->model('administrator/users');
+       $this->load->view('administrator/users');
+     }
+     
+     public function user_list()
+     {
+        $this->load->model('administrator/Musers');
+        $list=$this->Musers->get_users();
+        var_dump($list);
      }
      
      
