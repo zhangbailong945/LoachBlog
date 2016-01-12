@@ -43,12 +43,12 @@ class Login extends CI_Controller
                //从数据库获取管理员信息
                $data=$this->Musers->get_user($this->input->post('username'),$this->input->post('userpassword'));
                $this->session->set_userdata($data);
-               $this->load->view('administrator/index');
+               redirect('administrator/Administrator/index');
             }
             else
             {
                $this->form_validation->set_message('username_check', '管理员账号不存在');
-               redirect('administrator/login');
+               redirect('administrator/Login/index');
             }
 		}
      }
@@ -102,7 +102,7 @@ class Login extends CI_Controller
      	unset($_SESSION['username']);
         session_destroy();
 
-        $this->load->view('administrator/login');
+        $this->load->view('administrator/Login/login');
 
      }
     

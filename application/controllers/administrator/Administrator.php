@@ -21,9 +21,9 @@ class Administrator extends CI_Controller
             }
      }
      
-     public function users_view()
+     public function index()
      {
-       $this->load->view('administrator/users');
+       $this->load->view('administrator/index');
      }
      
      public function user_list()
