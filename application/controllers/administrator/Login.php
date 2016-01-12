@@ -101,8 +101,14 @@ class Login extends CI_Controller
      {
      	unset($_SESSION['username']);
         session_destroy();
-
-        $this->load->view('administrator/Login/login');
+        if(!isset($_SESSION['username']))
+        {
+           redirect('administrator/Login/login');
+        }
+        else 
+        {
+           redirect('administrator/Administrator/index');
+        }
 
      }
     

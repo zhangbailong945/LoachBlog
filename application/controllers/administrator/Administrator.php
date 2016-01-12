@@ -23,7 +23,15 @@ class Administrator extends CI_Controller
      
      public function index()
      {
-       $this->load->view('administrator/index');
+     	
+          if(isset($_SESSION['username'])&&!empty($_SESSION['username']))
+          {
+              $this->load->view('administrator/index');
+          }
+          else 
+          {
+              redirect('administrator/Login/login');
+          }      
      }
      
      public function user_list()

@@ -2,7 +2,7 @@
 <?php  
 header("Content-type:text/html;charset=utf-8"); 
 $themes_Path=base_url()."communal/administrator"; 
-$url_path=site_url();
+$submit_Path=site_url();
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -76,7 +76,7 @@ $(function(){
 		}
 	});
 
-	check_login();
+
 	
 	
 });
@@ -96,22 +96,6 @@ function checkEmpty(str)
     return flag;
 }
 
-
-function check_login()
-{
-	var user_name="<?php echo $_SESSION['username']; ?>";
-	if(checkEmpty(user_name)==false)
-	{
-		location.href="<?php echo $url_path; ?>/administrator/Login/login";
-    }
-	else
-	{
-		
-		location.href="<?php echo $url_path; ?>/administrator/Administrator/index";
-    }
-	
-}
-
 </script>
 </head>
 
@@ -121,9 +105,9 @@ function check_login()
 			<div class="headerNav">
 				<a class="logo" href="http://j-ui.com">标志</a>
 				<ul class="nav">
-					<li style="color:#ddd">你好：管理员</li>
+					<li style="color:#ddd">你好：<font color="blank"><?php echo $_SESSION['username'];?></font></li>
 					<li><a href="#" target="_blank">修改密码</a></li>
-					<li><a href="login.html">退出</a></li>
+					<li><a href="<?php echo $submit_Path; ?>/administrator/Login/loginout">退出</a></li>
 				</ul>
 				<ul class="themeList" id="themeList">
 					<li theme="default"><div class="selected">蓝色</div></li>
@@ -232,6 +216,6 @@ function check_login()
 
 	</div>
 
-	<div id="footer">Copyright &copy; 2010 <a href="demo_page2.html" target="dialog">DWZ团队</a> 京ICP备05019125号-10</div>
+	<div id="footer">Copyright &copy; 2010 <a href="demo_page2.html" target="dialog">zhangbailong@outlook.com</a></div>
 </body>
 </html>

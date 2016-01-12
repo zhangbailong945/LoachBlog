@@ -50,7 +50,7 @@ $themes_Path=base_url()."communal/administrator";
 						<input class="sub" type="submit" value=" "/>
 					</div>
 					<p>
-					<center><span id="message_sp">提示：xxxxxx</span></center>
+					<center><span id="message_sp"></span></center>
 					</p>
 				</form>
 			</div>
