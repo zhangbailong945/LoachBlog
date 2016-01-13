@@ -139,7 +139,7 @@ function checkEmpty(str)
 					</div>
 					<div class="accordionContent">
 						<ul class="tree">
-							<li><a href="userlist.html" target="navTab" rel="showUsers" title="用户列表">浏览用户</a></li>
+							<li><a href="<?php echo $submit_Path; ?>/administrator/Administrator/user_list" target="navTab" rel="showUsers" title="用户列表">浏览用户</a></li>
 							<li><a href="useradd.html" height="300" width="800" target="dialog" rel="addUser">添加用户</a></li>
 						</ul>
 					</div>
