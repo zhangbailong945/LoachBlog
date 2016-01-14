@@ -189,25 +189,25 @@ function checkEmpty(str)
 					<div class="tabsRight">right</div><!-- 禁用只需要添加一个样式 class="tabsRight tabsRightDisabled" -->
 					<div class="tabsMore">more</div>
 				</div>
-				<ul class="tabsMoreList">
+					<ul class="tabsMoreList">
 					<li><a href="javascript:;">我的主页</a></li>
 				</ul>
 				<div class="navTab-panel tabsPageContent layoutBox">
 					<div class="page unitBox">
 						<div class="accountInfo">
 							<div class="alertInfo">
-								<h2><a href="doc/dwz-user-guide.pdf" target="_blank">DWZ框架使用手册(PDF)</a></h2>
-								<a href="doc/dwz-user-guide.swf" target="_blank">DWZ框架演示视频</a>
+								<h2><a href="#">系统信息</a></h2>
+								<a href="#" ><?php echo $systeminfo['system_os'] ?></a>
 							</div>
 							<div class="right">
-								<p><a href="doc/dwz-user-guide.zip" target="_blank" style="line-height:19px">DWZ框架使用手册(CHM)</a></p>
-								<p><a href="doc/dwz-ajax-develop.swf" target="_blank" style="line-height:19px">DWZ框架Ajax开发视频教材</a></p>
+								<p><a href="#" style="line-height:19px">运行环境：<?php echo $systeminfo['environment'] ?></a></p>
+								<p><a href="#" style="line-height:19px">MYSQL版本：<?php echo $systeminfo['mysqlver'] ?></a></p>
 							</div>
-							<p><span>DWZ富客户端框架</span></p>
-							<p>DWZ官方微博:<a href="http://weibo.com/dwzui" target="_blank">http://weibo.com/dwzui</a></p>
+							<p><span>浏览器</span></p>
+							<p><a href="http://weibo.com/dwzui" target="_blank"><?php echo $systeminfo['browser'][0] . "&nbsp;" . $systeminfo['browser'][1] ?></a></p>
 						</div>
-						
 					
+										
 					</div>
 					
 				</div>
