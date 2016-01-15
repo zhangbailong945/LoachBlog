@@ -20,17 +20,20 @@ class Systeminfo {
             $os = 'Windows ME';
         } elseif (preg_match('/win/i', $Agent) && preg_match('/98/i', $Agent)) {
             $os = 'Windows 98';
-        } elseif (preg_match('/win/i', $Agent) && preg_match('/nt 5.0/i', $Agent)) {
+        } elseif (preg_match('/win/i', $Agent) && preg_match('/NT 5.0/i', $Agent)) {
             $os = 'Windows 2000';
-        } elseif (preg_match('/win/i', $Agent) && preg_match('/nt 6.0/i', $Agent)) {
+        } elseif (preg_match('/win/i', $Agent) && preg_match('/NT 6.0/i', $Agent)) {
             $os = 'Windows Vista';
-        } elseif (preg_match('/win/i', $Agent) && preg_match('/nt 6.1/i', $Agent)) {
+        } elseif (preg_match('/win/i', $Agent) && preg_match('/NT 6.1/i', $Agent)) {
             $os = 'Windows 7';
-        } elseif (preg_match('/win/i', $Agent) && preg_match('/nt 5.1/i', $Agent)) {
+        } elseif (preg_match('/win/i', $Agent) && preg_match('/NT 5.1/i', $Agent)) {
             $os = 'Windows XP';
-        } elseif (preg_match('/win/i', $Agent) && preg_match('/nt/i', $Agent)) {
+        } elseif (preg_match('/win/i', $Agent) && preg_match('/NT 10.0/i', $Agent)) {
+            $os = 'Windows 10';
+        } elseif (preg_match('/win/i', $Agent) && preg_match('/NT/i', $Agent)) {
             $os = 'Windows NT';
-        } elseif (preg_match('/win/i', $Agent) && preg_match('/32/i', $Agent)) {
+        }
+        elseif (preg_match('/win/i', $Agent) && preg_match('/32/i', $Agent)) {
             $os = 'Windows 32';
         } elseif (preg_match('/linux/i', $Agent)) {
             $os = 'Linux';

@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('session','form_validation','Authcode');
+$autoload['libraries'] = array('session','form_validation','Authcode','database','writelog');
 
 /*
 | -------------------------------------------------------------------
@@ -83,7 +83,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('form','url');
+$autoload['helper'] = array('form','url','common_function');
 
 /*
 | -------------------------------------------------------------------
@@ -97,7 +97,7 @@ $autoload['helper'] = array('form','url');
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array();
+$autoload['config'] = array('page_config');
 
 /*
 | -------------------------------------------------------------------
@@ -126,4 +126,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('administrator/Musers');
+$autoload['model'] = array('administrator/Musers','administrator/Database_Model');

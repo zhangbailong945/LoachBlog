@@ -204,13 +204,62 @@ function checkEmpty(str)
 								<p><a href="#" style="line-height:19px">MYSQL版本：<?php echo $systeminfo['mysqlver'] ?></a></p>
 							</div>
 							<p><span>浏览器</span></p>
-							<p><a href="http://weibo.com/dwzui" target="_blank"><?php echo $systeminfo['browser'][0] . "&nbsp;" . $systeminfo['browser'][1] ?></a></p>
+							<p><a href="#"><?php echo $systeminfo['browser'][0] . "&nbsp;" . $systeminfo['browser'][1] ?></a></p>
+							
 						</div>
-					
-										
+						
+						<div class="accountInfo">
+						  <div class="alertInfo">
+								<h2><a href="#">其他</a></h2>
+								<a href="#" ></a>
+							</div>
+					    </div>	
+					    
+					    <div class="accountInfo">
+						  <div class="alertInfo">
+								<h2><a href="#">其他</a></h2>
+								<a href="#" ></a>
+							</div>
+					    </div>		
+					    
+					    <div class="accountInfo">
+						  <div class="alertInfo">
+								<h2><a href="#">其他</a></h2>
+								<a href="#" ></a>
+							</div>
+					    </div>		
+					    
+					    <div class="accountInfo">
+						  <div class="alertInfo">
+								<h2><a href="#">其他</a></h2>
+								<a href="#" ></a>
+							</div>
+					    </div>	
+					    
+					    <div class="accountInfo">
+						  <div class="alertInfo">
+								<h2><a href="#">其他</a></h2>
+								<a href="#" ></a>
+							</div>
+					    </div>		
+					    
+					    <div class="accountInfo">
+						  <div class="alertInfo">
+								<h2><a href="#">其他</a></h2>
+								<a href="#" ></a>
+							</div>
+					    </div>		
+					    
+					    <div class="accountInfo">
+						  <div class="alertInfo">
+								<h2><a href="#">其他</a></h2>
+								<a href="#" ></a>
+							</div>
+					    </div>										
 					</div>
-					
 				</div>
+				
+				
 			</div>
 		</div>
 

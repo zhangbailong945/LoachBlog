@@ -3,6 +3,10 @@
 class Administrator extends CI_Controller
 {
 	 public $systeminfo;
+	 private $where = array();
+     private $limit = array();
+     private $fields = array('id,username,userpassword,useremail,userip');
+	 
      public function __construct()
      {
         parent::__construct();
@@ -56,12 +60,21 @@ class Administrator extends CI_Controller
           }      
      }
      
-     public function user_list()
-     {
-        $this->load->model('administrator/Musers');
-        //$list=$this->Musers->get_users();
-        $this->load->view('administrator/userlist');
-     }
+    /**
+     * 用户列表
+     */
+    public function user_list() {
+        $this->load->library('tablecount'); //导入数据库表自定义类
+        $total_data = $this->tablecount->get_tablecount('users', $this->where); //总条数
+        $pageNum = isset($_POST['pageNum']) ? $_POST['pageNum'] : 1;
+        $pageinfo = page($total_data, $pageNum); //计算分页总数和分页条件
+        //var_dump($pageinfo);
+        $this->load->library('tablelist'); //导入数据库表自定义类
+        $this->limit = $pageinfo['limit'];
+        $data = $pageinfo['pageinfo'];
+        $data['datalist'] = $this->tablelist->get_tablelist('users', $this->where, $this->fields = array(), array(), $this->limit);
+        $this->load->view('administrator/userlist', $data);
+    }
      
      
 }

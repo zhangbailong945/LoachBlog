@@ -1,11 +1,7 @@
-<form id="pagerForm" method="post" action="demo_page1.html">
-	<input type="hidden" name="status" value="${param.status}">
-	<input type="hidden" name="keywords" value="${param.keywords}" />
-	<input type="hidden" name="pageNum" value="1" />
-	<input type="hidden" name="numPerPage" value="${model.numPerPage}" />
-	<input type="hidden" name="orderField" value="${param.orderField}" />
+<form id="pagerForm" method="post" action="<?php echo site_url("administrator/Administrator/user_list") ?>">
+    <input type="hidden" name="pageNum" value="<?php echo $total_data; ?>" />
+    <input type="hidden" name="numPerPage" value="<?php echo $per_page_num; ?>" />
 </form>
-
 
 <div class="pageHeader">
 	<form onsubmit="return navTabSearch(this);" action="demo_page1.html" method="post">
@@ -41,64 +37,29 @@
 		<thead>
 			<tr>
 				<th width="20"><input type="checkbox" group="uid" class="checkboxCtrl"></th>
-				<th width="80">序号</th>
+				<th width="80">id</th>
 				<th width="100">用户名</th>
-				<th width="60">性别</th>
-				<th width="60">年龄</th>
+				<th width="60">密码</th>
+				<th width="60">ip</th>
 				<th width="120">Email</th>
-				<th width="120">注册时间</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr target="sid_user" rel="1">
-				<td><input name="uid" value="xxx" type="checkbox"></td>
-				<td>1</td>
-				<td>张三</td>
-				<td>男</td>
-				<td>30</td>
-				<td>tao.zhang.tc@163.com</td>
-				<td>2009-05-21</td>
-			</tr>
-			<tr target="sid_user" rel="2">
-				<td><input name="uid" value="xxx" type="checkbox"></td>
-				<td>2</td>
-				<td>李四</td>
-				<td>男</td>
-				<td>30</td>
-				<td>tao.zhang.tc@163.com</td>
-				<td>2009-05-21</td>
-			</tr>
-			<tr target="sid_user" rel="3">
-				<td><input name="uid" value="xxx" type="checkbox"></td>
-				<td>2</td>
-				<td>王五</td>
-				<td>男</td>
-				<td>30</td>
-				<td>tao.zhang.tc@163.com</td>
-				<td>2009-05-21</td>
-			</tr>
-			<tr target="sid_user" rel="2">
-				<td><input name="uid" value="xxx" type="checkbox"></td>
-				<td>22</td>
-				<td>李四</td>
-				<td>男</td>
-				<td>30</td>
-				<td>tao.zhang.tc@163.com</td>
-				<td>2009-05-21</td>
-			</tr>
-			<tr target="sid_user" rel="3">
-				<td><input name="uid" value="xxx" type="checkbox"></td>
-				<td>2</td>
-				<td>王五</td>
-				<td>男</td>
-				<td>30</td>
-				<td>tao.zhang.tc@163.com</td>
-				<td>2009-05-21</td>
-			</tr>
+			     <?php foreach ($datalist as $val) { ?>
+                <tr target="userid" rel="<?php echo $val['id']; ?>">
+                    <td><input type="checkbox" group="uid" class="checkboxCtrl"></td>
+                    <td><?php echo $val['id']; ?></td>
+                    <td><?php echo $val['username']; ?></td>
+                    <td><?php echo $val['userpassword']; ?></td>
+                    <td><?php echo $val['userip']; ?></td>
+                    <td><?php echo $val['useremail']; ?></td>
+                </tr>
+            <?php } ?>		
 		</tbody>
 	</table>
 	<div class="panelBar">
 		<div class="pages">
+		<!-- 
 			<span>显示</span>
 			<select class="combox" name="numPerPage" onchange="navTabPageBreak({numPerPage:this.value})">
 				<option value="20">20</option>
@@ -106,10 +67,10 @@
 				<option value="100">100</option>
 				<option value="200">200</option>
 			</select>
-			<span>条，共20条</span>
-		</div>
-		
-		<div class="pagination" targetType="navTab" totalCount="120" numPerPage="10" pageNumShown="8" currentPage="5"></div>
+			 -->
+			<span>共<?php echo $total_data; ?>条</span>
+		</div>		
+		        <div class="pagination" targetType="navTab" totalCount="<?php echo $total_data; ?>" numPerPage="<?php echo $per_page_num; ?>" pageNumShown="10" currentPage="<?php echo $curr_page; ?>"></div>
 
 	</div>
 </div>
