@@ -50,13 +50,13 @@
 					var $inputBox = $this.find(":text");
 					var $button = $this.find(":button");
 					$button.click(function(event){  
-				        varpageNum = $inputBox.val();  
+				        var pageNum = $inputBox.val();  
 				        if(pageNum && pageNum.isPositiveInteger()) {  
-				            // 判断是否大于总页数，如果大于则跳转到第一页 @ketayao  
+				            // 判断是否大于总页数，如果大于则跳转到第一页
 				            if(pageNum > pc.numPages()) {  
 				                pageNum = 1;  
 				            }  
-				            // 判断是否大于总页数，如果大于则跳转到第一页 @ketayao  
+				            // 判断是否大于总页数，如果大于则跳转到第一页  
 				            dwzPageBreak({targetType:pc.targetType(), rel:pc.rel(), data: {pageNum:pageNum}});  
 				        }  
 				    });   

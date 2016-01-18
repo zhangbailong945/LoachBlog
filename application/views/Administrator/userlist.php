@@ -71,9 +71,9 @@ $submit_Path=site_url();
 				<option value="200">200</option>
 			</select>
 			 -->
-			<span>共<font color="blue"><?php echo $total_data; ?></font>条,<font color="blue"><?php echo $total_page; ?></font>页。</span>
+			<span>当前第<font color="blue"><?php echo $curr_page; ?></font>页，共<font color="blue"><?php echo $total_page; ?></font>页，<font color="blue"><?php echo $total_data; ?></font>为用户。</span>
 		</div>		
-		        <div class="pagination" targetType="navTab" totalCount="<?php echo $total_data; ?>" numPerPage="<?php echo $per_page_num; ?>" pageNumShown="10" currentPage="1"></div>
+		        <div class="pagination" targetType="navTab" totalCount="<?php echo $total_data; ?>" numPerPage="<?php echo $per_page_num; ?>" pageNumShown="10" currentPage="<?php echo $curr_page; ?>"></div>
 
 	</div>
 </div>

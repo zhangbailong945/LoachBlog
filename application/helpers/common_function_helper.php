@@ -16,6 +16,10 @@ if (!function_exists("page")) {
         $per_page_num = $ci->config->item('per_page_num');
         $offset = ($curr_page - 1) * $per_page_num; //偏移量
         $total_page = ceil($total_data / $per_page_num); //总页数
+        if($curr_page>$total_page)
+        {
+        	$curr_page = 1;        	
+        }
         return array(
             'limit' => array($per_page_num, $offset),
             'pageinfo' => array(

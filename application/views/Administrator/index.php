@@ -264,6 +264,6 @@ function checkEmpty(str)
 
 	</div>
 
-	<div id="footer">Copyright &copy; 2010 <a href="demo_page2.html" target="dialog">zhangbailong@outlook.com</a></div>
+	<div id="footer">Copyright &copy; 2016 <a href="#" target="dialog">zhangbailong@outlook.com</a></div>
 </body>
 </html>
