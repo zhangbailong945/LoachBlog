@@ -49,12 +49,17 @@
 					var $this = $(this);
 					var $inputBox = $this.find(":text");
 					var $button = $this.find(":button");
-					$button.click(function(event){
-						var pageNum = $inputBox.val();
-						if (pageNum && pageNum.isPositiveInteger()) {
-							dwzPageBreak({targetType:pc.targetType(), rel:pc.rel(), data: {pageNum:pageNum}});
-						}
-					});
+					$button.click(function(event){  
+				        varpageNum = $inputBox.val();  
+				        if(pageNum && pageNum.isPositiveInteger()) {  
+				            // 判断是否大于总页数，如果大于则跳转到第一页 @ketayao  
+				            if(pageNum > pc.numPages()) {  
+				                pageNum = 1;  
+				            }  
+				            // 判断是否大于总页数，如果大于则跳转到第一页 @ketayao  
+				            dwzPageBreak({targetType:pc.targetType(), rel:pc.rel(), data: {pageNum:pageNum}});  
+				        }  
+				    });   
 					$inputBox.keyup(function(event){
 						if (event.keyCode == DWZ.keyCode.ENTER) $button.click();
 					});
