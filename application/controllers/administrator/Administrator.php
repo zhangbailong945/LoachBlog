@@ -65,6 +65,11 @@ class Administrator extends CI_Controller
      */
     public function user_list() {
         $this->load->library('tablecount'); //导入数据库表自定义类
+        $keyword=$this->input->post('keyword');
+        if(!empty($keyword))
+        {
+        	$this->where['username']=$keyword;
+        }
         $total_data = $this->tablecount->get_tablecount('users', $this->where); //总条数
         $pageNum = isset($_POST['pageNum']) ? $_POST['pageNum'] : 1;
         $pageinfo = page($total_data, $pageNum); //计算分页总数和分页条件

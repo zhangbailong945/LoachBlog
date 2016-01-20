@@ -3,19 +3,19 @@ header("Content-type:text/html;charset=utf-8");
 $themes_Path=base_url()."communal/administrator"; 
 $submit_Path=site_url();
 ?>
-<form id="pagerForm" method="post" action="<?php echo site_url("administrator/Administrator/user_list") ?>">
+<form id="pagerForm" method="post" action="<?php echo site_url("administrator/Administrator/user_list"); ?>">
     <input type="hidden" name="pageNum" value="<?php echo $total_page; ?>" />
     <input type="hidden" name="numPerPage" value="<?php echo $per_page_num; ?>" />
 </form>
 
 <div class="pageHeader">
-	<form onsubmit="return navTabSearch(this);" action="demo_page1.html" method="post">
+	<form onsubmit="return navTabSearch(this);" action="<?php echo site_url("administrator/Administrator/user_list"); ?>" method="post">
 	<div class="searchBar">
 		
 		<table class="searchContent">
 			<tr>
 				<td>
-					关键字：<input type="text" name="keyword" /> [姓名、性别]
+					关键字：<input type="text" name="keyword" /> [用户名]
 				</td>
 			</tr>
 		</table>
