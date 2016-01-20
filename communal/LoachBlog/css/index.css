@@ -14,16 +14,23 @@ body {
 	list-style: none;
 }
 
-#container1 {
+/*主页 styledate*/
+#styledate {
 	position: relative;
 	width: 960px;
 	margin: 1px auto;
+}
 
+/*主页 blogtag*/
+#blogtag {
+	position: relative;
+	width: 960px;
+	margin: 1px auto;
 }
 
 #menu {
 	width: 960px;
-	margin: 10px auto 1px auto;
+	margin: 10px auto 3px auto;
 	border: 1px solid #222;
 	background-color: #111;
 	background-image: -moz-linear-gradient(#444, #111);
@@ -307,3 +314,11 @@ body {
 #menu li:hover > .no-transition {
 	display: block;
 }
+
+/*tags*/
+#tagscloud{width:240px;height:240px;position:relative;font-size:12px;color:#333;margin:20px auto 0;text-align:center;margin-top:2px;margin-left:2px;}
+#tagscloud a{position:absolute;top:0px;left:0px;color:#333;font-family:Arial;text-decoration:none;}
+#tagscloud a:hover{color:#fff;padding:5px;display:block;background:#D02F53;}
+#tagscloud a.tagc1{margin:0 10px 15px 0;line-height:18px;width:65px;text-align:center;font-size:12px;padding:1px 5px;white-space:nowrap;display:inline-block;border-radius:3px;background:#666;color:#fff;}
+#tagscloud a.tagc2{margin:0 10px 15px 0;line-height:18px;width:60px;text-align:center;font-size:12px;padding:1px 5px;white-space:nowrap;display:inline-block;border-radius:3px;background:#F16E50;color:#fff;}
+#tagscloud a.tagc5{margin:0 10px 15px 0;line-height:18px;width:70px;text-align:center;font-size:12px;padding:1px 5px;white-space:nowrap;display:inline-block;border-radius:3px;background:#006633;color:#fff;}
