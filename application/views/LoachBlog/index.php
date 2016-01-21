@@ -18,6 +18,76 @@ $submit_Path=site_url();
 <script src="<?php echo $LoachBlog_Path; ?>/js/tagscloud.js" type="text/javascript"></script>
 <style type="text/css">
 
+body{
+background:url('<?php echo $LoachBlog_Path; ?>/images/feiji.png');
+}
+
+
+
+.actGotop{
+position:fixed;
+_position:absolute;
+bottom:100px;
+right:50px;
+width:150px;
+height:195px;
+display:none;
+z-index:9999;
+}
+.actGotop a,.actGotop a:link{
+width:150px;
+height:195px;
+display:inline-block;
+background:url('<?php echo $LoachBlog_Path; ?>/images/feiji1.png') no-repeat;_background:url(images/feiji2.gif) no-repeat;
+outline:none;
+}
+.actGotop a:hover{
+background:url('<?php echo $LoachBlog_Path; ?>/images/feiji2.gif') no-repeat;
+outline:none;
+}
+
+.ui-menu:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+ 
+ 
+.ui-menu .ui-menu-item {
+    display: inline-block;
+    float: left;
+    margin:0px 20px 0px 0px;
+    padding: 0;
+    width: auto;
+}
+
+/*博客推荐*/
+#blog_tj {
+position: relative;
+width: 960px;
+margin: 1px auto 1px auto;
+}
+
+/*博文推荐文字*/
+#blog_tj span{
+   font: 18px "微软雅黑", Arial, Helvetica, sans-serif;
+   color: #444;
+   font-weight: bold;
+   line-height:15px;  
+}
+
+#blog_bg{
+  background: url('<?php echo $LoachBlog_Path; ?>/images/h_line.jpg') repeat-x 20px center; 
+}
+
+#blog_hot_bg{
+ background: url('<?php echo $LoachBlog_Path; ?>/images/r_line.jpg'); 
+}
+
+
 
 </style>
 
@@ -25,7 +95,7 @@ $submit_Path=site_url();
 
 <body>
 
-
+             <div class="actGotop"><a href="javascript:;" title="返回顶部"></a></div>
 		<!-- 导航开始 -->
 			<div id="menu-wrap">
 				<ul id="menu">
@@ -62,17 +132,38 @@ $submit_Path=site_url();
 			       
 			       </div>
 			    </div>
-			    
+			    <!-- 博文推荐 -->
+			    <div id="blog_tj" style="border:1px solid red;height:15px;float:left;">
+			       <span style="border:1px solid red;height:10px;float:left;"><font color="#cff43d">博文</font><font color="#f26464">推荐</font>:</span>
+			       <div id="blog_bg" style="border:1px solid blue;width:90%;height:15px;float:right;">
+			       
+			       </div>
+			       
+		        </div>
 		   </div>
 		   
-		   <!-- 个性宣言和日历 结束 -->		    
+		   <!-- 博文和其他表情，分享等 -->		    
 		    <div id="blogtag" style="border:1px solid red;height:auto;margin-top:10px;">
 		        <!-- blog 内容 -->
-			    <div id="blog_hot" style="border:1px solid blue;width:70%;height:960px;float:left;margin-top:10px;">
-			     blog 内容
+			    <div id="blog_hot" style="border:1px solid blue;width:68%;height:960px;float:left;margin-top:10px;">
+                  <div id="resizable" class="ui-widget-content" >
+					  <h3 class="ui-widget-header">热门博文</h3>
+					  <p>ssss</p>
+					  <p>ssss</p>
+					  <p>ssss</p>
+					  <p>ssss</p>
+					  <p>ssss</p>
+					  <p>ssss</p>
+					  <p>ssss</p>
+					  <p>ssss</p>
+				</div>
 			    </div>
+			    <div id="blog_hot_bg" style="border:1px solid blue;width:15px;height:960px;float:left;margin-top:10px;">
+			    </div>
+			    			
+			       
 			     <!-- blog标签 -->
-			    <div id="tagscloud" style="border:1px solid red;width:29%;min-height:200px;float:right;margin-top:10px;">
+			    <div id="tagscloud" style="border:1px solid red;width:29%;min-height:200px;float:right;margin-top:10px;">		                      
 		            <div id="tagscloud">
 							<a href="http://www.jq-school.com/Article.aspx?kid=1" class="tagc1" title="星级评分">星级评分(2)</a>
 							<a href="http://www.jq-school.com/Article.aspx?kid=2" class="tagc2" title="层特效">层特效(34)</a>
@@ -119,15 +210,33 @@ $submit_Path=site_url();
                                             友情链接
 			    </div>
 			    
+			   <div id="botoom_menu" style="border:1px solid red;width:100%;min-height:20px;float:left;margin-top:2px;">
+				   <ul id="jqmenu">
+					  <li>首页</li>
+					  <li>其他</li>
+					  <li>其他</li>
+					  <li>其他</li>
+		          </ul>
+		      </div>
+		      
+		      <div id="botoom_copy" style="border:1px solid red;width:100%;min-height:14px;float:left;margin-top:2px;">
+                <center>
+                 2016&copyzhangbailong945@outlook.com
+                </center>
+		      </div>
+		      
+		      			    
 		   </div>
+
 		   
+		  
 		<!-- 版权开始 -->  
 
 		<!-- 版权结束 --> 
 
 <!-- 内容结束 -->
-
-<script>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2082165"></script>
+<script type="text/javascript">
 $(function() {
 
 	if ($.browser.msie && $.browser.version.substr(0,1) < 7){
@@ -152,7 +261,21 @@ $(function() {
 		changeMonth:true,
 		changeYear:true,　
 		});
-		 $("#datepicker").css('font-size','0.9em') //改变大小
+	$("#datepicker").css('font-size','0.9em'); //改变大小
+	$('#jqmenu').menu();
+	$('#resizable').resizable();
+	
+	$(window).scroll(function() {		
+		if($(window).scrollTop() >= 100){
+			$('.actGotop').fadeIn(300); 
+		}else{    
+
+			$('.actGotop').fadeOut(300);    
+		}  
+	});
+	$('.actGotop').click(function(){
+	$('html,body').animate({scrollTop: '0px'}, 800);});	
+	
 });
 
 </script>

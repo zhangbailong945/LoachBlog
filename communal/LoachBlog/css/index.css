@@ -1,5 +1,5 @@
 body {
-	background: #eee url('<?php echo $themes_Path; ?>/images/bodyBg.png');
+
 	overflow:auto;
 }
 #menu {
@@ -13,6 +13,8 @@ body {
 	padding: 0;
 	list-style: none;
 }
+
+
 
 /*主页 styledate*/
 #styledate {
@@ -28,6 +30,12 @@ body {
 	margin: 1px auto;
 }
 
+/*底部菜单*/
+#botoom_menu{
+   position: relative;
+	width: 960px;
+	margin: 10px auto;
+}
 #menu {
 	width: 960px;
 	margin: 10px auto 3px auto;
@@ -322,3 +330,6 @@ body {
 #tagscloud a.tagc1{margin:0 10px 15px 0;line-height:18px;width:65px;text-align:center;font-size:12px;padding:1px 5px;white-space:nowrap;display:inline-block;border-radius:3px;background:#666;color:#fff;}
 #tagscloud a.tagc2{margin:0 10px 15px 0;line-height:18px;width:60px;text-align:center;font-size:12px;padding:1px 5px;white-space:nowrap;display:inline-block;border-radius:3px;background:#F16E50;color:#fff;}
 #tagscloud a.tagc5{margin:0 10px 15px 0;line-height:18px;width:70px;text-align:center;font-size:12px;padding:1px 5px;white-space:nowrap;display:inline-block;border-radius:3px;background:#006633;color:#fff;}
+
+
+
