@@ -14,13 +14,17 @@ $submit_Path=site_url();
 <script src="<?php echo $LoachBlog_Path;?>/js/jquery-1.9.0.min.js" type="text/javascript"></script>
 <script src="<?php echo $LoachBlog_Path;?>/ligerUI/js/core/base.js" type="text/javascript"></script>
 <script src="<?php echo $LoachBlog_Path;?>/ligerUI/js/plugins/ligerLayout.js" type="text/javascript"></script>
+<script src="<?php echo $LoachBlog_Path;?>/ligerUI/js/plugins/ligerDateEditor.js" type="text/javascript"></script>
+<script src="<?php echo $LoachBlog_Path;?>/ligerUI/js/plugins/ligerPanel.js" type="text/javascript"></script>
 <style type="text/css">
         body{ padding:20px; margin:0;}
+        #panel1-1,#panel1-2,#panel1-3{margin:4px;}
 </style>
 
 </head>
 <body>
  
+  
 
 
     <div id="layout">
@@ -30,34 +34,41 @@ $submit_Path=site_url();
         <!-- 博文内容 -->
         <div position="center" title="热门博文">
           blog
+          
         </div>
         <!-- 博文内容 -->
-        <!--  -->
-        <div position="right"> 
-           <div id="panel1-1" style="float: left; width: 400px;" class="l-panel" ligeruiid="panel1-1">
-	           <div class="l-panel-header">
-	                <span>标题</span>
-		           <div class="icons">
-		           <a class="l-panel-icon l-panel-header-toggle" title="收起">
-		           </a>
-		           </div>
-	           </div>
-	           <div class="l-panel-content" style="height: 275px;">
-	           <div>232454</div>
-	           </div>
-           </div>
-
-        <div position="bottom">
         
+        <!--  右边 插件 开始-->
+        <div position="right"> 
+        
+	        <div id="panel1">
+	           <input type="text" id="datetime" />
+	        </div>
+	        <div id="panel2">
+	            
+	        </div>
+	        <div id="panel3">
+	            
+	        </div>
+	            
+                     
         </div>
-    </div>
+        <!--  右边 插件 结束-->
+        
+        <!-- 底部 开始 -->
+        <div position="bottom">
+        111
+        </div>    
+	    <!-- 底部 开始 -->
+	    </div>
 <script type="text/javascript"> 
             $(function ()
             { 
-                $("#layout").ligerLayout({rightWidth:300});
-                $("#panel1-1").ligerPanel({
-                    title: '标题',
-                });
+                $("#layout").ligerLayout({rightWidth:310});
+                $("#panel1").ligerPanel({title:'测试',showToggler:true,width:300});
+                $("#datetime").ligerDateEditor({absolute:false,showTime:true});
+                $("#panel2").ligerPanel({title:'测试',showToggler:true,width:300});
+                $("#panel3").ligerPanel({title:'测试',showToggler:true,width:300});
             });
              
 </script> 
