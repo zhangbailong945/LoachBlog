@@ -145,29 +145,31 @@ function checkEmpty(str)
 					<!-- 滑动菜单结束 -->
 					
 					<div class="accordionHeader">
-						<h2><span>Folder</span>组件的展示</h2>
+						<h2><span>Folder</span>文章管理</h2>
 					</div>
 					<div class="accordionContent">
 						<ul class="tree treeFolder">
-							<li><a href="w_panel.html" target="navTab" rel="showPanel">面板</a></li>
-							<li><a href="w_tabs.html" target="navTab" rel="dlg_page2">选项卡</a></li>
-							<li><a href="w_tree.html" target="navTab" rel="showTree">树形菜单</a>
-								<ul>
-									<li><a href="">子菜单1</a></li>
-									<li><a href="">子菜单2</a></li>
-								</ul>
-							</li>
-							<li><a href="w_myform.html" target="navTab" rel="showform">编辑器/日历</a></li>
+							<li><a href="<?php echo $submit_Path; ?>/administrator/Administrator/user_list" target="navTab" rel="showPanel">文章类型</a></li>
+							<li><a href="<?php echo $submit_Path; ?>/administrator/Administrator/user_list" target="navTab" rel="dlg_page2">文章</a></li>
+						</ul>
+					</div>
+					
+					<div class="accordionHeader">
+						<h2><span>Folder</span>相册管理</h2>
+					</div>
+					<div class="accordionContent">
+						<ul class="tree treeFolder">
+							<li><a href="<?php echo $submit_Path; ?>/administrator/Administrator/user_list" target="navTab" rel="showPanel">相册类型</a></li>
+							<li><a href="<?php echo $submit_Path; ?>/administrator/Administrator/user_list" target="navTab" rel="dlg_page2">照片</a></li>
 						</ul>
 					</div>
 
 					<div class="accordionHeader">
-						<h2><span>Folder</span>流程演示</h2>
+						<h2><span>Folder</span>日志管理</h2>
 					</div>
 					<div class="accordionContent">
-						<ul class="tree">
-							<li><a href="newPage1.html" target="dialog" rel="dlg_page">列表</a></li>
-							<li><a href="newPage1.html" target="dialog" rel="dlg_page2">列表</a></li>
+						<ul class="tree treeFolder">
+							<li><a href="<?php echo $submit_Path; ?>/administrator/Administrator/user_list" target="navTab" rel="showPanel">系统日志</a></li>	
 						</ul>
 					</div>
 				
