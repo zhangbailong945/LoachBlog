@@ -46,7 +46,33 @@ $submit_Path=site_url();
         
         <!-- 博文内容 -->
         <div position="center" title="热门博文">
-          blog
+          <!-- 单篇博文简介 -->
+          <div style="border:1px solid red;width:auto;height:202px;margin:2px;">
+           <div style="line-height: 29px;border:1px solid green;width:auto;height:29px;clear:both;">
+            <b><a href="#">第一篇 博文 我的程序世界</a></b>
+           </div>
+           <div style="width:130px;height:130px;float:left;">
+             <img style="width:130px;height:130px;" src="" alt="图标" />
+           </div>
+           <div style="height:130px;margin-left:132px;">
+                <div style="height:70px;margin:10px;">
+                   <p>
+                      &nbsp;&nbsp;博文 我的程序世界博文 我的程序世界博文 我的程序世界博文 我的程序世界博文 我的程序世界博文 我的程序世界
+                   </p>
+                </div>
+                
+                <div style="height:29px;margin:10;">
+                  <div style="background:#fd8a61;float:right;width:85px;height:29px;line-height:29px;color: #fff;">
+                     <center><a href="#">阅读全文》》</a></center>
+                  </div>
+                </div>
+           </div>
+           <div style="background:#f6f6f6;color: #838383;line-height:29px;border:1px solid green;width:auto;height:29px;clear:both;">
+                               <div style="float:right;">&nbsp;&nbsp;&nbsp;&nbsp;时间:2016-02-01&nbsp;&nbsp;&nbsp;&nbsp;作者:loach&nbsp;&nbsp;&nbsp;&nbsp;个人博客:[程序员]&nbsp;&nbsp;&nbsp;&nbsp;</div>
+           </div>
+          
+          </div>
+          <!-- 单篇博文简介 -->
           
         </div>
         <!-- 博文内容 -->
