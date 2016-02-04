@@ -283,3 +283,35 @@ $(function() {
 
 </body>
 </html>
+
+
+
+
+<!-- 单篇博文简介 -->
+          <!--  -->
+          <div class="blog_div">
+           <div class="blog_title_div">
+            <b><a href="#">第一篇 博文 我的程序世界</a></b>
+           </div>
+           <div class="blog_img_div">
+             <img src="<?php echo $LoachBlog_Path;?>/images/houzi.jpg" alt="图标" />
+           </div>
+           <div class="blog_intrduction_div">
+                <div class="blog_content_div">
+                   <p>
+                      &nbsp;&nbsp;博文 我的程序世界博文 我的程序世界博文 我的程序世界博文 我的程序世界博文 我的程序世界博文 我的程序世界
+                   </p>
+                </div>
+                
+                <div class="blog_read_div">
+                  <div class="blog_readmore_div">
+                     <center><a href="#">阅读全文>></a></center>
+                  </div>
+                </div>
+           </div>
+           <div class="blog_author_div">
+               <div class="blog_author_details_div">&nbsp;&nbsp;&nbsp;&nbsp;时间:2016-02-01&nbsp;&nbsp;&nbsp;&nbsp;作者:loach&nbsp;&nbsp;&nbsp;&nbsp;个人博客:[程序员]&nbsp;&nbsp;&nbsp;&nbsp;</div>
+           </div>
+          
+          </div>
+          <!-- 单篇博文简介 -->

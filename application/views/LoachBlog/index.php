@@ -24,55 +24,31 @@ $submit_Path=site_url();
 <style type="text/css">
         body{ padding:20px; margin:0;}
         #panel1-1,#panel1-2,#panel1-3{margin:4px;}
+        
 </style>
 
 </head>
 <body>
  
-  
-
-
+ 
     <div id="layout">
         <div position="top">
-                <div id="topmenu" class="l-menubar" ligeruiid="topmenu">
-                <div class="l-menubar-item l-panel-btn">
-                 <input type="button" value="哈哈">              
-                </div>
-                <div class="l-menubar-item l-panel-btn">
-                <span>导出</span>
-                </div>
-                </div>       
+            <ul id="menu">
+			<li><a href="http://www.jq22.com/" target="_blannk">首 页</a></li>
+			<li> <a href="">分 类</a>
+			</li>
+			<li> <a href="">链 接</a>						
+			</li>
+			<li><a href="">关 于</a></li>
+			<li><a href="">联 系</a>				
+			</li>
+		</ul>
         </div>
         
         <!-- 博文内容 -->
-        <div position="center" title="热门博文">
-          <!-- 单篇博文简介 -->
-          <div style="border:1px solid red;width:auto;height:202px;margin:2px;">
-           <div style="line-height: 29px;border:1px solid green;width:auto;height:29px;clear:both;">
-            <b><a href="#">第一篇 博文 我的程序世界</a></b>
-           </div>
-           <div style="width:130px;height:130px;float:left;">
-             <img style="width:130px;height:130px;" src="" alt="图标" />
-           </div>
-           <div style="height:130px;margin-left:132px;">
-                <div style="height:70px;margin:10px;">
-                   <p>
-                      &nbsp;&nbsp;博文 我的程序世界博文 我的程序世界博文 我的程序世界博文 我的程序世界博文 我的程序世界博文 我的程序世界
-                   </p>
-                </div>
-                
-                <div style="height:29px;margin:10;">
-                  <div style="background:#fd8a61;float:right;width:85px;height:29px;line-height:29px;color: #fff;">
-                     <center><a href="#">阅读全文》》</a></center>
-                  </div>
-                </div>
-           </div>
-           <div style="background:#f6f6f6;color: #838383;line-height:29px;border:1px solid green;width:auto;height:29px;clear:both;">
-                               <div style="float:right;">&nbsp;&nbsp;&nbsp;&nbsp;时间:2016-02-01&nbsp;&nbsp;&nbsp;&nbsp;作者:loach&nbsp;&nbsp;&nbsp;&nbsp;个人博客:[程序员]&nbsp;&nbsp;&nbsp;&nbsp;</div>
-           </div>
+        <div  id="blogs_div" position="center" title="热门博文">
+        
           
-          </div>
-          <!-- 单篇博文简介 -->
           
         </div>
         <!-- 博文内容 -->
@@ -119,29 +95,83 @@ $submit_Path=site_url();
 	        </div>
 	        <div id="panel3">
 	            
-	        </div>
-	            
-                     
+	        </div>	
+	                           
         </div>
         <!--  右边 插件 结束-->
-        
         <!-- 底部 开始 -->
-        <div position="bottom">
-        111
+        <div id="bottom_div" position="bottom">
+         <center>LoachBlog&copy2016 by zhangbailong945@outlook.com</center>
         </div>    
 	    <!-- 底部 开始 -->
-	    </div>
+	   </div>
+	    
 <script type="text/javascript"> 
-
 
             $(function ()
             { 
-                $("#layout").ligerLayout({rightWidth:310});
+            	getBlogs();
+                $("#layout").ligerLayout({rightWidth:310,allowTopResize: false,allowBottomResize: false,allowRightResize:false,bottomHeight:30,onRightToggle:function(isColl){alert(isColl ? "收缩" : "显示");}});
+                $("#bottom").ligerLayout({ height: 30 });
                 $("#panel1").ligerPanel({title:'热门云标签',showToggler:true,width:300});
                 $("#datetime").ligerDateEditor({absolute:false,showTime:true});
                 $("#panel2").ligerPanel({title:'关注我',showToggler:true,width:300});
                 $("#panel3").ligerPanel({title:'友情链接',showToggler:true,width:300});
-            });
+                
+              });
+
+            function getBlogs()
+            {
+            	$.ajax({
+            	    type: 'POST',
+            	    async: true,
+            	    url:"<?php echo site_url()."/LoachBlog/LoachBlog/getBlogs";?>",
+            	    dataType: "json",
+            	    success: function(data)
+            	    {
+            	    	$("#layout").ligerLayout({heightDiff:200});
+            	    	if(data)
+    		              {                 	    		     	           
+                              var html = '';
+                              for (var i = 0; i <data['datalist'].length; i++) {
+                                  html += '<div class="blog_div">';
+                                  html += '<div class="blog_title_div">';
+                                  html += '<b><a href="#">'+data["datalist"][i].article_title+'</a></b>';
+                                  html += '</div>';
+                                  html += '<div class="blog_img_div">';
+                                  html += '<img src="<?php echo $LoachBlog_Path;?>/images/houzi.jpg" alt="图标" />';
+                                  html += '</div>';
+                                  html += '<div class="blog_intrduction_div">';
+                                  html += '<div class="blog_content_div">';
+                                  html += '<p>&nbsp;&nbsp;'+data["datalist"][i].article_content+'</p>';
+                                  html += '</div>';
+                                  html += '<div class="blog_read_div">';
+                                  html += '<div class="blog_readmore_div">';
+                                  html += '<center><a href="#">阅读全文>></a></center>';
+                                  html += '</div>';
+                                  html += '</div>';
+                                  html += '</div>';
+                                  html += '<div class="blog_author_div">';
+                                  html += '<div class="blog_author_details_div">&nbsp;&nbsp;&nbsp;&nbsp;时间:2016-02-01&nbsp;&nbsp;&nbsp;&nbsp;作者:loach&nbsp;&nbsp;&nbsp;&nbsp;个人博客:[程序员]&nbsp;&nbsp;&nbsp;&nbsp;</div>';
+                                  html += '</div>';
+                                  html += '</div>';
+                              }
+                              html +='<div sytle="margin-bottom:1px;float:right;border:1px solid red;height:30px;width:100%;line-height:30px;"><center><a href="javascript:void(0);" onclick="getMore();">加载更多博文</a></center></div>';
+                              $("#blogs_div").append(html); 
+                                                      
+    			          }
+    		              else
+    		              {	            	  
+    		            	  alert(data);
+    			          }
+            	   }
+            	});
+            }
+
+            function getMore()
+            {
+            	$("#layout").ligerLayout({heightDiff:200});
+            }
 
                         
 </script> 

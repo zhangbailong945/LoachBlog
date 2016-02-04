@@ -1,4 +1,18 @@
-/*tags*/
+/***
+***
+**AUTHOR LOACH
+**
+*/
+#layout{
+margin-top:1px;
+
+}
+
+#blogs_div{
+  
+}
+
+/*云标签*/
 #tagscloud{width:240px;height:240px;position:relative;font-size:12px;color:#333;margin:20px auto 0;text-align:center;text-align:center;margin-top:auto;margin-left:auto;}
 #tagscloud a{position:absolute;top:0px;left:0px;color:#333;font-family:Arial;text-decoration:none;}
 #tagscloud a:hover{color:#fff;padding:5px;display:block;background:#D02F53;}
@@ -6,7 +20,100 @@
 #tagscloud a.tagc2{margin:0 10px 15px 0;line-height:18px;width:60px;text-align:center;font-size:12px;padding:1px 5px;white-space:nowrap;display:inline-block;border-radius:3px;background:#F16E50;color:#fff;}
 #tagscloud a.tagc5{margin:0 10px 15px 0;line-height:18px;width:70px;text-align:center;font-size:12px;padding:1px 5px;white-space:nowrap;display:inline-block;border-radius:3px;background:#006633;color:#fff;}
 
-/*page right*/
+/*页面布局右边标签*/
 #panel1{margin:1px 3px;}
 #panel2{margin:1px 3px;}
 #panel3{margin:1px 3px;}
+
+/*单篇博文DIV样式*/
+.blog_div{
+border:0px solid red;
+width:auto;
+height:202px;
+margin:2px;
+}
+
+/*单篇博文标题DIV样式*/
+.blog_title_div{
+line-height: 29px;
+border:0px solid green;
+width:auto;
+height:29px;
+clear:both;
+}
+
+.blog_title_div a{
+ text-decoration:none;
+}
+
+/*博文图片DIV*/
+.blog_img_div{
+width:130px;
+height:130px;
+float:left;
+}
+
+/*博文图片*/
+.blog_img_div img{
+width:130px;
+height:130px;
+}
+
+/*博文简介DIV*/
+.blog_intrduction_div{
+height:130px;
+margin-left:132px;
+}
+
+/*博文简介内容DIV*/
+.blog_content_div{
+height:70px;
+margin:10px;
+}
+
+/*博文readDIV*/
+.blog_read_div{
+  height:29px;margin:10;
+}
+
+/*博文readmore DIV*/
+.blog_readmore_div{
+  background:#fd8a61;
+  float:right;
+  width:85px;
+  height:29px;
+  line-height:29px;
+
+}
+
+.blog_readmore_div a{
+  color: #fff;
+  text-decoration:none;
+}
+
+/*博文作者DIV*/
+.blog_author_div{
+  background:#f6f6f6;
+  color: #838383;
+  line-height:29px;
+  border:0px solid green;
+  width:auto;
+  height:29px;
+  clear:both;
+}
+/*博文作者详情DIV*/
+.blog_author_details_div{
+float:right;
+}
+
+.blog_author_details_div a{
+
+}
+
+#bottom_div{
+ line-height:30px;
+ height:30px;
+ background:#f6f6f6;
+ border:0px solid blue;
+}
+
