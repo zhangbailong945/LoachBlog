@@ -9,13 +9,13 @@ $submit_Path=site_url();
 </form>
 
 <div class="pageHeader">
-	<form onsubmit="return navTabSearch(this);" action="<?php echo site_url("administrator/Administrator/user_list"); ?>" method="post">
+	<form onsubmit="return navTabSearch(this);" action="<?php echo site_url("administrator/ArticleType/articletype_list"); ?>" method="post">
 	<div class="searchBar">
 		
 		<table class="searchContent">
 			<tr>
 				<td>
-					关键字：<input type="text" name="keyword" /> [用户名]
+					关键字：<input type="text" name="keyword" /> [文章类型名称]
 				</td>
 			</tr>
 		</table>
@@ -31,8 +31,8 @@ $submit_Path=site_url();
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-			<li><a class="add" href="<?php echo $submit_Path; ?>/administrator/administrator/useradd_view" height="300" width="800" target="dialog" rel="addUser"><span>添加</span></a></li>
-			<li><a class="delete" href="<?php echo $submit_Path; ?>/administrator/administrator/userdelete_Controller/{userid}" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
+			<li><a class="add" href="<?php echo $submit_Path; ?>/administrator/ArticleType/articletypeadd_view" height="300" width="800" target="dialog" rel="addUser"><span>添加</span></a></li>
+			<li><a class="delete" href="<?php echo $submit_Path; ?>/administrator/ArticleType/articletypedelete_Controller/{article_type_id}" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
 			<li><a class="edit" href="demo_page4.html?uid={sid_user}" target="navTab"><span>修改</span></a></li>
 			<li class="line">line</li>
 			<li><a class="icon" href="demo/common/dwz-team.xls" target="dwzExport" targetType="navTab" title="实要导出这些记录吗?"><span>导出EXCEL</span></a></li>
@@ -42,20 +42,20 @@ $submit_Path=site_url();
 		<thead>
 			<tr>
 				<th width="80">id</th>
-				<th width="100">用户名</th>
-				<th width="60">密码</th>
+				<th width="100">文章类型</th>
+				<th width="60">类型描述</th>
 				<th width="60">ip</th>
 				<th width="120">Email</th>
 			</tr>
 		</thead>
 		<tbody>
 			     <?php foreach ($datalist as $val) { ?>
-                <tr target="userid" rel="<?php echo $val['id']; ?>">
-                    <td><?php echo $val['id']; ?></td>
-                    <td><?php echo $val['username']; ?></td>
-                    <td><?php echo $val['userpassword']; ?></td>
-                    <td><?php echo $val['userip']; ?></td>
-                    <td><?php echo $val['useremail']; ?></td>
+                <tr target="article_type_id" rel="<?php echo $val['article_type_id']; ?>">
+                    <td><?php echo $val['article_type_id']; ?></td>
+                    <td><?php echo $val['article_type_name']; ?></td>
+                    <td><?php echo $val['article_type_description']; ?></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             <?php } ?>		
 		</tbody>
@@ -71,7 +71,7 @@ $submit_Path=site_url();
 				<option value="200">200</option>
 			</select>
 			 -->
-			<span>当前第<font color="blue"><?php echo $curr_page; ?></font>页，共<font color="blue"><?php echo $total_page; ?></font>页，有<font color="blue"><?php echo $total_data; ?></font>位用户。</span>
+			<span>当前第<font color="blue"><?php echo $curr_page; ?></font>页，共<font color="blue"><?php echo $total_page; ?></font>页，有<font color="blue"><?php echo $total_data; ?></font>种文章类型。</span>
 		</div>		
 		        <div class="pagination" targetType="navTab" totalCount="<?php echo $total_data; ?>" numPerPage="<?php echo $per_page_num; ?>" pageNumShown="10" currentPage="<?php echo $curr_page; ?>"></div>
 

@@ -149,8 +149,8 @@ function checkEmpty(str)
 					</div>
 					<div class="accordionContent">
 						<ul class="tree treeFolder">
-							<li><a href="<?php echo $submit_Path; ?>/administrator/Administrator/user_list" target="navTab" rel="showPanel">文章类型</a></li>
-							<li><a href="<?php echo $submit_Path; ?>/administrator/Administrator/user_list" target="navTab" rel="dlg_page2">文章</a></li>
+							<li><a href="<?php echo $submit_Path; ?>/administrator/ArticleType/articletype_list" target="navTab" rel="articletype">文章类型</a></li>
+							<li><a href="<?php echo $submit_Path; ?>/administrator/Article/article_list" target="navTab" rel="dlg_page2">文章</a></li>
 						</ul>
 					</div>
 					
