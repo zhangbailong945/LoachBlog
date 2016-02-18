@@ -23,7 +23,9 @@ $submit_Path=site_url();
 			<dl>
 				<dt>文章类型：</dt>
 				<dd>
-					<input type="text" name="article_type_name" maxlength="20" class="required" />
+					<select class="combox" id="articletype_combox" name="province" ref="w_combox_city" refUrl="demo/combox/city_{value}.html">
+
+					</select>
 				</dd>
 			</dl>
 			<dl>
@@ -56,6 +58,36 @@ function customvalidXxx(element){
 }
 
 var ue = UE.getEditor('editor');
+$(function(){
+   getArticleType();
+});
+
+function getArticleType()
+{
+	$.ajax({
+	    type: 'POST',
+	    async: false,
+	    url:"<?php echo site_url()."/administrator/ArticleType/getArticleType_data/";?>",
+	    dataType: "json",
+	    success: function(data)
+	    {
+	    	$('#articletype_combox').html('');
+	    	if(data)
+              {
+	              var html='';
+                  for(var i=0;i<data.length;i++)
+                  {
+                       html+='<option value='+data[i].article_type_id+'>'+data[i].article_type_name+'</option>';
+                  }
+                  $('#articletype_combox').append(html);
+	          }
+              else
+              {
+            	  $('#articletype_combox').append('<option>暂无文章类型，请添加.</option>');
+	          }
+	   }
+	});
+}
 
 
 </script>

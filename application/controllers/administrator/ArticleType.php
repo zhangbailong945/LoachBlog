@@ -96,5 +96,16 @@ class ArticleType extends CI_Controller{
 	        }
 	        echo json_encode($this->return);
 	    }
+	    
+	    /**
+	     * 获取文章类型集合
+	     * Enter description here ...
+	     */
+	    public function getArticleType_data()
+	    {
+	        $this->load->model('administrator/ArticleType_Model');
+	        $data=$this->ArticleType_Model->getArticleTypeData();
+	        echo json_encode($data);
+	    }
 
 }
