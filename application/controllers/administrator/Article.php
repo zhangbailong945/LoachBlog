@@ -24,7 +24,7 @@ class Article extends CI_Controller
 		        $keyword=$this->input->post('keyword');
 		        if(!empty($keyword))
 		        {
-		        	$this->where['article_type_name']=$keyword;
+		        	$this->where['article_title']=$keyword;
 		        }
 		        $total_data = $this->tablecount->get_tablecount('article', $this->where); //总条数
 		        $pageNum = isset($_POST['pageNum']) ? $_POST['pageNum'] : 1;
@@ -47,7 +47,7 @@ class Article extends CI_Controller
      {
      	if(isset($_SESSION['username'])&&!empty($_SESSION['username']))
           {
-          	$this->load->view('administrator/articletypeadd');
+          	$this->load->view('administrator/articleadd');
           }
           else
           {

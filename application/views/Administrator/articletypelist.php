@@ -3,7 +3,7 @@ header("Content-type:text/html;charset=utf-8");
 $themes_Path=base_url()."communal/administrator"; 
 $submit_Path=site_url();
 ?>
-<form id="pagerForm" method="post" action="<?php echo site_url("administrator/Administrator/user_list"); ?>">
+<form id="pagerForm" method="post" action="<?php echo site_url("administrator/ArticleType/articletype_list"); ?>">
     <input type="hidden" name="pageNum" value="<?php echo $total_page; ?>" />
     <input type="hidden" name="numPerPage" value="<?php echo $per_page_num; ?>" />
 </form>
