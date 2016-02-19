@@ -96,6 +96,29 @@ class Article extends CI_Controller
 	        }
 	        echo json_encode($this->return);
 	    }
+	    
+	    
+	      public function useradd_Controller()
+	      {
+	      
+	         $data=array('username'=>$this->input->post('username'),'userpassword'=>$this->input->post('userpassword'),'useremail'=>$this->input->post('useremail'),'userip'=>'192.168.0.1');
+	         $this->load->library('tableinsert');
+	         if($this->tableinsert->insert_table('users',$data)>0)
+	         {
+	            $this->return['statusCode'] = '200';
+	                $this->return['message'] = '操作成功';
+	                $this->return['navTabId'] = 'article';
+	                $this->return['callbackType']='closeCurrent';
+	                $this->return['forwardUrl'] = site_url().'/administrator/article/article_list';
+	         }
+	         else
+	         {
+	                $this->return['statusCode'] = '300';
+	                $this->return['message'] = '操作失败';
+	         }
+	         
+	         echo json_encode($this->return);
+	      }
       
       
 

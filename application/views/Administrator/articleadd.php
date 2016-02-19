@@ -17,33 +17,35 @@ $submit_Path=site_url();
 			<dl>
 				<dt>文章标题：</dt>
 				<dd>
-					<input type="text" name="article_type_name" maxlength="20" class="required" />
+					<input type="text" id="article_title" name="article_title" maxlength="20"  /><span id="article_title_check"></span>
 				</dd>
 			</dl>
 			<dl>
 				<dt>文章类型：</dt>
 				<dd>
-					<select class="combox" id="articletype_combox" name="province" ref="w_combox_city" refUrl="demo/combox/city_{value}.html">
-
+					<select class="combox" id="articletype_combox" name="article_type_id" ref="w_combox_city" refUrl="demo/combox/city_{value}.html">
+                     <option value="0">请选择</option>
 					</select>
+					<span id="article_type_id_check"></span>
 				</dd>
 			</dl>
 			<dl>
 				<dt>文章简介：</dt>
 				<dd>
-				<textarea class="editor" name="article_type_description" rows="4" cols="80"></textarea>
+				<textarea class="editor" id="article_introduction" name="article_introduction" rows="4" cols="80"></textarea><span id="article_introduction_check"></span>
 				</dd>
 			</dl>
 			<dl>
 				<dt>文章内容：</dt>
 				<dd>
 				<script id="editor" type="text/plain" style="width:850px;height:200px;"></script>
+				<span id="editor_check"></span>
 				</dd>
 			</dl>
 		</div>
 		<div class="formBar">
 			<ul>
-				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="button" onclick="dosubmit();">提交</button></div></div></li>
 				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
 			</ul>
 		</div>
@@ -71,7 +73,7 @@ function getArticleType()
 	    dataType: "json",
 	    success: function(data)
 	    {
-	    	$('#articletype_combox').html('');
+	    	//$('#articletype_combox').html('');
 	    	if(data)
               {
 	              var html='';
@@ -89,5 +91,109 @@ function getArticleType()
 	});
 }
 
+//判断是否为空
+function check_temp(str)
+{
+   if(typeof(str)!="undefined"&&str.length>0&&str!=null)
+   {
+      return true;
+   }
+   else
+   {
+      return false;
+   }
+}
+
+
+
+/**
+ * 判断文章标题
+ */
+function article_title_check()
+{
+   if(check_temp($('#article_title').val()))
+   {
+	   $('#article_title_check').html('&nbsp;&nbsp;<font color="green">ok!</font>');
+       return true;
+   }
+   else
+   {
+	   $('#article_title_check').html('&nbsp;&nbsp;<font color="red">文章标题不能为空！</font>');
+       return false;
+   }
+}
+
+/**
+ * 判断文章类型
+ */
+function article_type_id_check()
+{
+var va=parseInt($('#articletype_combox').val());
+   if(va>0)
+   {
+	   $('#article_type_id_check').html('&nbsp;&nbsp;<font color="green">ok！</font>');
+       return true;
+   }
+   else
+   {
+	   $('#article_type_id_check').html('&nbsp;&nbsp;<font color="red">请选择文章类型！</font>');
+       return false;
+   }
+}
+
+/**
+ * 判断文章简介
+ */
+function article_introduction_check()
+{
+	alert($('#article_introduction').val());
+   if(check_temp($('#article_introduction').val()))
+   {
+	   $('#article_introduction_check').html('&nbsp;&nbsp;<font color="green">ok！</font>');
+       return true;
+   }
+   else
+   {
+	   $('#article_introduction_check').html('&nbsp;&nbsp;<font color="red">文章简介不能为空！</font>');
+       return false;
+   }
+}
+
+/**
+ * 判断文章内容
+ */
+function article_hasContent()
+{
+    if(ue.hasContents())
+    {
+        return true;
+    }
+    else
+    {
+         return false;
+    }
+
+}
+
+
+
+
+
+function dosubmit()
+{
+
+	if(article_title_check()&&article_type_id_check()&&article_introduction_check())
+	{
+	    var article_title=$('#article_title').val();
+	    var article_type_id=$('#article_type_id').val();
+	    var article_introduction=$('#article_introduction').val();
+	    var article_content=ue.getContent();
+	}
+	else
+	{
+       return false;
+	}
+    
+}
 
 </script>
