@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost/LoachBlog/';
+$config['base_url'] = 'http://zhangbailong945.gotoip2.com/LoachBlog/';
 
 /*
 |--------------------------------------------------------------------------
