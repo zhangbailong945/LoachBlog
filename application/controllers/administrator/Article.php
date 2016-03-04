@@ -60,21 +60,35 @@ class Article extends CI_Controller
       */
      public function articleadd_Controller()
      {  
-         $data=array('article_type_name'=>$this->input->post('article_type_name'),'article_type_description'=>$this->input->post('article_type_description'));
+     	 $article_posttime=strtotime("now");
+         $data=array(
+         'article_author_id'=>$_SESSION['id'],
+         'article_title'=>$this->input->post('article_title'),
+         'article_type_id'=>$this->input->post('article_type_id'),
+         'article_introduction'=>$this->input->post('article_introduction'),
+         'article_content'=>$this->input->post('article_content'),
+         'article_posttime'=>$article_posttime,
+         'article_comment_nums'=>0,
+         'article_view_nums'=>0,
+         'article_tags'=>'php',
+         'article_status'=>0         
+         );
+         
          $this->load->library('tableinsert');
-         if($this->tableinsert->insert_table('article_type',$data)>0)
+         if($this->tableinsert->insert_table('article',$data)>0)
          {
-            $this->return['statusCode'] = '200';
+                $this->return['statusCode'] = '200';
                 $this->return['message'] = '操作成功';
-                $this->return['navTabId'] = 'articletype';
+                $this->return['navTabId'] = 'article';
                 $this->return['callbackType']='closeCurrent';
-                $this->return['forwardUrl'] = site_url().'/administrator/ArticleType/articletype_list';
+                $this->return['forwardUrl'] = site_url().'/administrator/Article/article_list';
          }
          else
          {
                 $this->return['statusCode'] = '300';
                 $this->return['message'] = '操作失败';
          }
+         
          
          echo json_encode($this->return);
      }

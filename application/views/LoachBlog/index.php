@@ -30,7 +30,7 @@ $submit_Path=site_url();
 </head>
 <body>
  
- 
+  
     <div id="layout">
         <div position="top">
             <ul id="menu">
@@ -47,7 +47,7 @@ $submit_Path=site_url();
         
         <!-- 博文内容 -->
         <div  id="blogs_div" position="center" title="热门博文">
-        
+          
           
           
         </div>
@@ -105,13 +105,13 @@ $submit_Path=site_url();
         </div>    
 	    <!-- 底部 开始 -->
 	   </div>
-	    
+	   
 <script type="text/javascript"> 
 
             $(function ()
             { 
             	getBlogs();
-                $("#layout").ligerLayout({rightWidth:310,allowTopResize: false,allowBottomResize: false,allowRightResize:false,bottomHeight:30,onRightToggle:function(isColl){alert(isColl ? "收缩" : "显示");}});
+                $("#layout").ligerLayout({rightWidth:310,heightDiff:200,allowTopResize: false,allowBottomResize: false,allowRightResize:false,bottomHeight:30,onRightToggle:function(isColl){alert(isColl ? "收缩" : "显示");}});
                 $("#bottom").ligerLayout({ height: 30 });
                 $("#panel1").ligerPanel({title:'热门云标签',showToggler:true,width:300});
                 $("#datetime").ligerDateEditor({absolute:false,showTime:true});
@@ -143,11 +143,11 @@ $submit_Path=site_url();
                                   html += '</div>';
                                   html += '<div class="blog_intrduction_div">';
                                   html += '<div class="blog_content_div">';
-                                  html += '<p>&nbsp;&nbsp;'+data["datalist"][i].article_content+'</p>';
+                                  html += '<p>&nbsp;&nbsp;'+data["datalist"][i].article_introduction+'</p>';
                                   html += '</div>';
                                   html += '<div class="blog_read_div">';
                                   html += '<div class="blog_readmore_div">';
-                                  html += '<center><a href="#">阅读全文>></a></center>';
+                                  html += '<center><a href="#" onclick="lookArticle('+data["datalist"][i].article_id+');">阅读全文>></a></center>';
                                   html += '</div>';
                                   html += '</div>';
                                   html += '</div>';
@@ -171,6 +171,40 @@ $submit_Path=site_url();
             function getMore()
             {
             	$("#layout").ligerLayout({heightDiff:200});
+            }
+
+            function lookArticle(id)
+            {
+                
+               $.ajax({
+                      type:'POST',
+                      async: true,
+                      url:"<?php echo site_url()."/LoachBlog/LoachBlog/getBlogById";?>",
+              	      dataType: "json",
+              	      data:{id:id},
+              	      success:function(data)
+              	      {
+              	    	$("#blogs_div").html('');
+                         var html='';
+                         if(data)
+                         {
+	                         html += '<div id="blog_content_id" class="blog_content_id" style="border:1px solid red;height:auto;">';
+	                         html += '<div class="blog_title_id" style="border:1px solid green;line-height: 29px;height:29px;">';
+	                         html += '<b><a href="#">'+data.article_title+'</a></b>';
+	                         html += '</div>';
+	                         html += '<div class="blog_article_content_id" style="border:1px solid yellow;height:auto;">';
+	                         html += ''+data.article_content+'';
+	                         html += '</div>';
+	                         html += '<div class="blog_author_div">';
+	                         html += '<div class="blog_author_details_div">&nbsp;&nbsp;&nbsp;&nbsp;浏览（1）&nbsp;&nbsp;&nbsp;&nbsp;时间:2016-02-01&nbsp;&nbsp;&nbsp;&nbsp;作者:loach&nbsp;&nbsp;&nbsp;&nbsp;个人博客:[程序员]&nbsp;&nbsp;&nbsp;&nbsp;</div>';
+	                         html += '</div>';
+	                         html += '</div>';
+	                         $("#blogs_div").append(html);
+                         }
+                  	  }
+              	                  	    
+                      
+                   });
             }
 
                         

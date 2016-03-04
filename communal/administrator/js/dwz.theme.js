@@ -6,7 +6,7 @@
 	$.fn.extend({
 		theme: function(options){
 			var op = $.extend({themeBase:"themes"}, options);
-			var _themeHref = op.themeBase + "/#theme#/style.css";
+			var _themeHref = "http://localhost/LoachBlog/communal/administrator/themes"+ "/#theme#/style.css";
 			return this.each(function(){
 				var jThemeLi = $(this).find(">li[theme]");
 				var setTheme = function(themeName){

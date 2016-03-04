@@ -32,6 +32,14 @@ class LoachBlog extends CI_Controller
         echo json_encode($data);
     }
     
+    function getBlogById()
+    {
+    	$id=$this->input->post('id');
+    	$this->load->model('loachblog/Article_Model');
+    	$data=$this->Article_Model->getArticleById($id);
+    	echo json_encode($data);
+    }
+    
     
 
 }

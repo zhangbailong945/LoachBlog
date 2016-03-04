@@ -39,7 +39,7 @@ $submit_Path=site_url();
 				<dt>文章内容：</dt>
 				<dd>
 				<script id="editor" type="text/plain" style="width:850px;height:200px;"></script>
-				<span id="editor_check"></span>
+				<span id="article_content_check"></span>
 				</dd>
 			</dl>
 		</div>
@@ -146,7 +146,6 @@ var va=parseInt($('#articletype_combox').val());
  */
 function article_introduction_check()
 {
-	alert($('#article_introduction').val());
    if(check_temp($('#article_introduction').val()))
    {
 	   $('#article_introduction_check').html('&nbsp;&nbsp;<font color="green">ok！</font>');
@@ -166,10 +165,12 @@ function article_hasContent()
 {
     if(ue.hasContents())
     {
+    	$('#article_content_check').html('&nbsp;&nbsp;<font color="green">ok！</font>');
         return true;
     }
     else
     {
+    	$('#article_content_check').html('&nbsp;&nbsp;<font color="red">文章简介不能为空！</font>');
          return false;
     }
 
@@ -182,16 +183,32 @@ function article_hasContent()
 function dosubmit()
 {
 
-	if(article_title_check()&&article_type_id_check()&&article_introduction_check())
+	if(article_title_check()&&article_type_id_check()&&article_introduction_check()&&article_hasContent())
 	{
 	    var article_title=$('#article_title').val();
-	    var article_type_id=$('#article_type_id').val();
+	    var article_type_id=$('#articletype_combox').val();
 	    var article_introduction=$('#article_introduction').val();
 	    var article_content=ue.getContent();
-	}
-	else
-	{
-       return false;
+	    $.ajax({
+    	    type: 'POST',
+    	    async: false,
+    	    url:"<?php echo site_url()."/administrator/Article/articleadd_Controller";?>",
+    	    data:{article_title:article_title,article_type_id:article_type_id,article_introduction:article_introduction,article_content:article_content},
+    	    dataType: "json",
+    	    success: function(data)
+    	    {
+
+    	    	if(data.statusCode==DWZ.statusCode.ok)
+        	      {
+    	    		$.pdialog.closeCurrent();
+                    location.href="<?php echo site_url()."/administrator/Article/article_list";?>";
+		          }
+	              else
+	              {
+	            	  navTab.closeCurrentTab();
+		          }
+    	   }
+    	});
 	}
     
 }
