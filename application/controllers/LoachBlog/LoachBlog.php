@@ -39,8 +39,7 @@ class LoachBlog extends CI_Controller
     	$data=$this->Article_Model->getArticleById($id);
     	echo json_encode($data);
     }
-    
-    
+        
 
 }
 

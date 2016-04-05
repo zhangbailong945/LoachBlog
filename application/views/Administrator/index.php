@@ -7,7 +7,7 @@ $submit_Path=site_url();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>LoachBlog博客后台管理中心</title>
+<title>LoachBlog个人笔记后台管理中心</title>
 
 <link href="<?php echo $themes_Path; ?>/themes/default/style.css" rel="stylesheet" type="text/css" media="screen"/>
 <link href="<?php echo $themes_Path; ?>/themes/css/core.css" rel="stylesheet" type="text/css" media="screen"/>

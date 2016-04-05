@@ -8,8 +8,8 @@ $submit_Path=site_url();
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<title>Loach个人博客</title>     
-<meta name="keywords" content="Loach个人博客">  
+<title>Loach个人笔记</title>     
+<meta name="keywords" content="Loach个人笔记">  
 <link href="<?php echo $LoachBlog_Path;?>/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css">
 <link href="<?php echo $LoachBlog_Path;?>/css/index.css" rel="stylesheet" type="text/css">
 <script src="<?php echo $LoachBlog_Path;?>/js/jquery-1.9.0.min.js" type="text/javascript"></script>
@@ -44,9 +44,8 @@ $submit_Path=site_url();
 			</li>
 		</ul>
         </div>
-        
         <!-- 博文内容 -->
-        <div  id="blogs_div" position="center" title="热门博文">
+        <div  id="blogs_div" position="center" title="热门笔记">
           
           
           
@@ -91,17 +90,19 @@ $submit_Path=site_url();
                      </div>
 	        </div>
 	        <div id="panel2">
-	            
+	          <div id="aboutme">
+	           <a href="#"><img src="<?php echo $LoachBlog_Path;?>/images/feiji.png" width="200px;" height="200px" alt="关注我" /></a>
+	           </div>
 	        </div>
 	        <div id="panel3">
-	            
+	           
 	        </div>	
 	                           
         </div>
         <!--  右边 插件 结束-->
         <!-- 底部 开始 -->
         <div id="bottom_div" position="bottom">
-         <center>LoachBlog&copy2016 by zhangbailong945@outlook.com</center>
+         <center>LoachBlog&copy2016 by zhangbailong945@outlook.com&nbsp;&nbsp;<a href="http://www.miitbeian.gov.cn" target="_blank">粤ICP备16026304号</a></center>
         </div>    
 	    <!-- 底部 开始 -->
 	   </div>
@@ -110,8 +111,9 @@ $submit_Path=site_url();
 
             $(function ()
             { 
-            	getBlogs();
-                $("#layout").ligerLayout({rightWidth:310,heightDiff:200,allowTopResize: false,allowBottomResize: false,allowRightResize:false,bottomHeight:30,onRightToggle:function(isColl){alert(isColl ? "收缩" : "显示");}});
+            	
+                $("#layout").ligerLayout({rightWidth:310,allowTopResize: false,allowBottomResize: false,allowRightResize:false,bottomHeight:30,onRightToggle:function(isColl){alert(isColl ? "收缩" : "显示");}});
+                getBlogs();
                 $("#bottom").ligerLayout({ height: 30 });
                 $("#panel1").ligerPanel({title:'热门云标签',showToggler:true,width:300});
                 $("#datetime").ligerDateEditor({absolute:false,showTime:true});
@@ -129,7 +131,7 @@ $submit_Path=site_url();
             	    dataType: "json",
             	    success: function(data)
             	    {
-            	    	$("#layout").ligerLayout({heightDiff:200});
+            	    	
             	    	if(data)
     		              {                 	    		     	           
                               var html = '';
@@ -152,7 +154,7 @@ $submit_Path=site_url();
                                   html += '</div>';
                                   html += '</div>';
                                   html += '<div class="blog_author_div">';
-                                  html += '<div class="blog_author_details_div">&nbsp;&nbsp;&nbsp;&nbsp;时间:2016-02-01&nbsp;&nbsp;&nbsp;&nbsp;作者:loach&nbsp;&nbsp;&nbsp;&nbsp;个人博客:[程序员]&nbsp;&nbsp;&nbsp;&nbsp;</div>';
+                                  html += '<div class="blog_author_details_div">&nbsp;&nbsp;&nbsp;&nbsp;时间:2016-02-01&nbsp;&nbsp;&nbsp;&nbsp;作者:loach&nbsp;&nbsp;&nbsp;&nbsp;个人笔记:[程序员]&nbsp;&nbsp;&nbsp;&nbsp;</div>';
                                   html += '</div>';
                                   html += '</div>';
                               }
@@ -166,11 +168,6 @@ $submit_Path=site_url();
     			          }
             	   }
             	});
-            }
-
-            function getMore()
-            {
-            	$("#layout").ligerLayout({heightDiff:200});
             }
 
             function lookArticle(id)

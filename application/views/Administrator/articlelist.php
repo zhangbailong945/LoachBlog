@@ -52,10 +52,10 @@ $submit_Path=site_url();
 			     <?php foreach ($datalist as $val) { ?>
                 <tr target="article_id" rel="<?php echo $val['article_id']; ?>">
                     <td><?php echo $val['article_author_id']; ?></td>
+                    <td><?php echo $val['article_author_id']; ?></td>
                     <td><?php echo $val['article_type_id']; ?></td>
                     <td><?php echo $val['article_title']; ?></td>
                     <td><?php echo $val['article_introduction']; ?></td>
-                    <td><?php echo $val['article_content']; ?></td>
                 </tr>
             <?php } ?>		
 		</tbody>

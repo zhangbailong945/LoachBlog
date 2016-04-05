@@ -57,15 +57,15 @@ $themes_Path=base_url()."communal/administrator";
 			<div class="login_banner"><img src="<?php echo $themes_Path; ?>/themes/default/images/login_banner.jpg" /></div>
 			<div class="login_main">
 				<ul class="helpList">
-					<li><a href="#">下载LoachBlog个人博客系统？</a></li>
-					<li><a href="#">如何安装LoachBlog？</a></li>
-					<li><a href="#">忘记密码怎么办？</a></li>
-					<li><a href="#">为什么登录失败？</a></li>
+					<li><a href="#">LoachBlog个人笔记</a></li>
+					<li><a href="#">分享生活</a></li>
+					<li><a href="#">分享心情</a></li>
+					<li><a href="#">分享快乐</a></li>
 				</ul>
 				<div class="login_inner">
-					<p>您可以LoachBlog迅速的搭建个人博客。</p>
-					<p>您还可以使用LoachBlog构建自己的个人网上商店。</p>
-					<p>LoachBlog超乎你的想象......</p>
+					<p>记录我的点点滴滴</p>
+					<p>留住我的分分秒秒</p>
+					<p>书写我的朝朝幕幕</p>
 				</div>
 			</div>
 		</div>

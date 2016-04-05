@@ -29,7 +29,7 @@
         allowCenterBottomResize: true, 
         inWindow: true,     //是否以窗口的高度为准 height设置为百分比时可用
         heightDiff: 0,     //高度补差
-        height: '100%',      //高度
+        height:'100%',      //高度
         onHeightChanged: null,
         isLeftCollapse: false,      //初始化时 左边是否隐藏
         isRightCollapse: false,     //初始化时 右边是否隐藏
