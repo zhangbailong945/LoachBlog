@@ -20,10 +20,9 @@ class Wechat extends CI_Controller{
         if (empty($post)) {
             die();
         }
-        $msg = simplexml_load_string($post, 'SimpleXMLElement', LIBXML_NOCDATA);
-        
-        //log_message('debug', $msg->Content);
-        //
+        $msg = simplexml_load_string($post, 'SimpleXMLElement', LIBXML_NOCDATA);       
+        log_message('debug', $msg->Content);
+        /*
         switch ( $msg->MsgType ) {
 
             case 'event':
@@ -78,6 +77,9 @@ class Wechat extends CI_Controller{
             break;
 
         }
+        */
+        
+        
     }
 
 
