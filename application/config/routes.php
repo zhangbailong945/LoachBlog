@@ -52,5 +52,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //$route['administrator']='login'; 
 $route['default_controller'] = 'Welcome';
 $route['administrator/(:any)'] ='Administrator/index';
+$route['weixin/(:num)'] = 'WeiXin/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
